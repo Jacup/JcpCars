@@ -6,10 +6,12 @@ using System.Web.Mvc;
 
 namespace JCPCars.Controllers
 {
-    public class HomeController : Controller
+    public class DefaultController : Controller
     {
+        // GET: Default
         public ActionResult Index()
         {
+            //some test mod
             return View();
         }
     }
