@@ -19,7 +19,7 @@
                 <span></span>
             </a>
         </div>
-        <a id="main-header-logo" href="">
+        <a id="main-header-logo" href="@Url.Content("~/")">
             <img src="../Content/Images/jcpcars-logo-main.png" class="center" />
         </a>
     </header>
@@ -32,9 +32,9 @@
     <footer>
         <nav>
             <ul>
-                <li><a href="">O nas</a></li>
-                <li><a href="">Kontakt</a></li>
-                <li><a href="">Regulamin</a></li>
+                <li><a href="@Url.Action("StaticContent", "Home", new { viewname = "about" } )">O nas</a></li>
+                <li><a href="@Url.Action("StaticContent", "Home", new { viewname = "kontakt" } )">Kontakt</a></li>
+                <li><a href="@Url.Action("StaticContent", "Home", new { viewname = "regulamin" } )">Regulamin</a></li>
             </ul>
         </nav>
         <div id="footer-cd-logo">
