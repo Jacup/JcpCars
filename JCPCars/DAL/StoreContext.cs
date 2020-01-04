@@ -16,7 +16,7 @@ namespace JCPCars.DAL
         }
         static StoreContext()
         {
-            //Database.SetInitializer<StoreContext>(new StoreInitializer());
+            Database.SetInitializer<StoreContext>(new StoreInitializer());
         }
 
         public DbSet<Car> Cars { get; set; }

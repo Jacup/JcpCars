@@ -1,21 +1,24 @@
-﻿using JCPCars.Models;
+﻿using JCPCars.Migrations;
+using JCPCars.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.Entity.Migrations;
 
 namespace JCPCars.DAL
 {
-    public class StoreInitializer : DropCreateDatabaseAlways<StoreContext>
+    public class StoreInitializer : MigrateDatabaseToLatestVersion<StoreContext, Configuration>
     {
-        protected override void Seed(StoreContext context)
-        {
-            SeedStoreData(context);
-            base.Seed(context);
-        }
+        //protected override void Seed(StoreContext context)
+        //{
+        //    SeedStoreData(context);
+        //    base.Seed(context);
+        //}
 
-        private void SeedStoreData(StoreContext context) //metoda wypełniająca db przykładowymi danymi
+        public static void SeedStoreData(StoreContext context) //metoda wypełniająca db przykładowymi danymi
         {
             var series = new List<Serie>
             {
@@ -25,7 +28,7 @@ namespace JCPCars.DAL
                 new Serie() { SerieId = 4, Name = "Cabrio", IconFilename = "cabrio.png" },
                 new Serie() { SerieId = 5, Name = "Supercars", IconFilename = "supercars.png" }
             };
-            series.ForEach(g => context.Series.Add(g));
+            series.ForEach(g => context.Series.AddOrUpdate(g));
             context.SaveChanges();
 
 
@@ -39,7 +42,7 @@ namespace JCPCars.DAL
                 new Car() { CarId = 6, CarModel = "M5", CarBrand = "BMW", Description = "Opis", Price = 100, PictureFileName = "6.png", DateAdded = new DateTime(2019, 12, 1), SerieId = 2 },
             };
 
-            cars.ForEach(g => context.Cars.Add(g));
+            cars.ForEach(g => context.Cars.AddOrUpdate(g));
             context.SaveChanges();
         }
     }

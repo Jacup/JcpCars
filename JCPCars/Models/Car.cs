@@ -26,5 +26,6 @@ namespace JCPCars.Models
         public bool IsHidden { get; set; }
         public virtual Serie Serie { get; set; }
 
+
     }
 }
