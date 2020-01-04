@@ -16,6 +16,6 @@ namespace JCPCars.Models
         public string IconFilename { get; set; }
 
 
-//        public ICollection<Album> Albums { get; set; } TODO
+        public ICollection<Car> Car { get; set; }
     }
 }
