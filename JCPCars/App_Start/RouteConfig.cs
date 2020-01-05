@@ -21,15 +21,15 @@ namespace JCPCars
 
             routes.MapRoute(
                 name: "StaticPages",
-                url: "strony/{viewname}.html",
+                url: "{viewname}.html",
                 defaults: new { controller = "Home", action = "StaticContent" }
             );
 
             routes.MapRoute(
                 name: "ProductList",
-                url: "gatunki/{genrename}",
+                url: "rodzaje/{seriename}",
                 defaults: new { controller = "Store", action = "List" },
-                constraints: new { genrename = @"[\w& ]+" }
+                constraints: new { seriename = @"[\w- ]+" }
             );
 
             routes.MapRoute(

@@ -18,7 +18,7 @@ namespace JCPCars.Controllers
             return View();
         }
 
-        public ActionResult List(string genrename)
+        public ActionResult List(string seriename)
         {
             return View();
         }

@@ -189,6 +189,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AppConfig.cs" />
+    <Compile Include="Infrastructure\UrlHelpers.cs" />
     <Compile Include="Migrations\202001041331355_InitialCreate.cs" />
     <Compile Include="Migrations\202001041331355_InitialCreate.designer.cs">
       <DependentUpon>202001041331355_InitialCreate.cs</DependentUpon>
@@ -229,18 +231,6 @@
     <Content Include="Content\Cars\9.png" />
     <Content Include="Content\Cars\aa9760ef-b6dc-4242-a788-2573cfc4732d.jpg" />
     <Content Include="Content\Cars\bb2bddf4-3ead-4ab2-86e3-2e56239d0a1b.png" />
-    <Content Include="Content\Genre-icons\alternative.png" />
-    <Content Include="Content\Genre-icons\classics.png" />
-    <Content Include="Content\Genre-icons\electro.png" />
-    <Content Include="Content\Genre-icons\hiphop.png" />
-    <Content Include="Content\Genre-icons\jazz.png" />
-    <Content Include="Content\Genre-icons\metal.png" />
-    <Content Include="Content\Genre-icons\other.png" />
-    <Content Include="Content\Genre-icons\pop.png" />
-    <Content Include="Content\Genre-icons\promos.png" />
-    <Content Include="Content\Genre-icons\reagge.png" />
-    <Content Include="Content\Genre-icons\rnb.png" />
-    <Content Include="Content\Genre-icons\rock.png" />
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\ajax-loader.png" />
     <Content Include="Content\Images\baner-main.png" />

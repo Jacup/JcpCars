@@ -1,4 +1,5 @@
 ﻿@model JCPCars.ViewModels.HomeViewModel
+@using JCPCars.Infrastructure
 @{
     ViewBag.Title = "JcpCars";
 }
@@ -7,11 +8,11 @@
     <ul>
         @foreach (var serie in Model.Series)
         {
-            <li>
-                <a href="@Url.Action("List", "Store", new { seriename = serie.Name.ToLower() })" style="background-image: url(../Content/Genre-icons/rock.png); ">
+        <li>
+            <a href="@Url.Action("List", "Store", new { seriename = serie.Name.ToLower() })">
                     @serie.Name
                 </a>
-            </li>
+        </li>
         }
     </ul>
     <a href="">
