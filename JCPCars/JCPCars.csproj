@@ -372,6 +372,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Regulamin.cshtml" />
     <Content Include="Views\Store\List.cshtml" />
+    <Content Include="Views\Store\_SeriesMenu.cshtml" />
+    <Content Include="Views\Store\_CarList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

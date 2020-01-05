@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JCPCars.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace JCPCars.Controllers
 {
     public class StoreController : Controller
     {
+        StoreContext db = new StoreContext();
         public ActionResult Index()
         {
             return View();
@@ -20,7 +22,17 @@ namespace JCPCars.Controllers
 
         public ActionResult List(string seriename)
         {
-            return View();
+            var serie = db.Series.Include("Cars").Where(g => g.Name.ToUpper() == seriename.ToUpper()).Single();
+            var cars = serie.Cars.ToList();
+            return View(cars);
+        }
+
+        [ChildActionOnly]
+        public ActionResult SeriesMenu()
+        {
+            var series = db.Series.ToList();
+
+            return PartialView("_SeriesMenu", series);
         }
     }
 }

@@ -4,5 +4,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>List</h2>
+<div id="productlist-content">
 
+    @Html.Action("SeriesMenu")
+
+    <div id="productlist-rightsection">
+        <div id="breadcrumb-section">
+            <img src="@Url.Content("~/Content/Images/home-small.png")" />
+        </div>
+
+        @Html.Partial("_CarList")
+    </div>
+</div>

@@ -176,7 +176,7 @@ a:hover, a:visited, a:link, a:active {
     vertical-align: top;
 }
 
-nav.types-horizontal ul {
+nav.series-horizontal ul {
     overflow: hidden;
     border-left: 1px solid #E5E5E5;
     border-top: 1px solid #E5E5E5;
@@ -184,7 +184,7 @@ nav.types-horizontal ul {
     font-family: 'Segoe UI Semibold', 'Segoe WP', 'Segoe UI';
 }
 
-    nav.types-horizontal ul li {
+    nav.series-horizontal ul li {
         margin: auto;
         float: left;
         width: 332px;
@@ -196,7 +196,7 @@ nav.types-horizontal ul {
         line-height: 54px;
     }
 
-        nav.types-horizontal ul li a {
+        nav.series-horizontal ul li a {
             width: 100%;
             display: block;
             height: 100%;
@@ -206,7 +206,7 @@ nav.types-horizontal ul {
             background-position-y: 50%;
         }
 
-        nav.types-horizontal ul li:hover {
+        nav.series-horizontal ul li:hover {
             -moz-box-shadow: inset 0 0 3px #bbbbbb;
             -webkit-box-shadow: inset 0 0 3px #bbbbbb;
             box-shadow: inset 0 0 3px #bbbbbb;
@@ -233,7 +233,7 @@ nav.types-horizontal ul {
     }
 
 
-nav.types-vertical {
+nav.series-vertical {
     width: 202px;
     font-size: 18px;
     font-family: 'Segoe UI Semibold', 'Segoe WP', 'Segoe UI';
@@ -241,16 +241,16 @@ nav.types-vertical {
     float: left;
 }
 
-    nav.types-vertical ul li {
+    nav.series-vertical ul li {
         height: 50px;
         line-height: 50px;
     }
 
-        nav.types-vertical ul li:hover {
+        nav.series-vertical ul li:hover {
             background-color: #EBEBEB;
         }
 
-        nav.types-vertical ul li a {
+        nav.series-vertical ul li a {
             width: 100%;
             display: block;
             height: 100%;
@@ -407,11 +407,11 @@ ul.large-cover-list li {
 }
 
     ul.large-cover-list li a h1 {
-        top: 45%;
+        bottom: 0;
     }
 
     ul.large-cover-list li a:hover h1 {
-        top: 46%;
+        bottom: 0;
     }
 
 ul.small-cover-list li {
@@ -420,11 +420,11 @@ ul.small-cover-list li {
 }
 
     ul.small-cover-list li a h1 {
-        top: 40%;
+        bottom: 0;
     }
 
     ul.small-cover-list li a:hover h1 {
-        top: 41%;
+        bottom: 0;
     }
 
 
@@ -492,12 +492,12 @@ ul.ThreeColumnsCarsList {
             left: 0;
             height: 100%;
             width: 100%;
-            z-index: -1;
-            opacity: 0.1;
+            /*z-index: -1;
+            opacity: 1;
             -webkit-transition: opacity 0.5s ease;
             -o-transition: opacity 0.5s ease;
             -moz-transition: opacity 0.5s ease;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.5s ease;*/
         }
 
         ul.ThreeColumnsCarsList li a:hover img.car-image {
