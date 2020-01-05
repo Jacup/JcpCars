@@ -222,9 +222,9 @@
     <Content Include="Content\Cars\1.png" />
     <Content Include="Content\Cars\2.png" />
     <Content Include="Content\Cars\3.png" />
-    <Content Include="Content\Cars\4.jpg" />
-    <Content Include="Content\Cars\5.jpg" />
-    <Content Include="Content\Cars\6.jpg" />
+    <Content Include="Content\Cars\4.png" />
+    <Content Include="Content\Cars\5.png" />
+    <Content Include="Content\Cars\6.png" />
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\ajax-loader.png" />
     <Content Include="Content\Images\baner-main.png" />
@@ -377,7 +377,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Prototype\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
