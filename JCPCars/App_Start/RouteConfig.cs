@@ -15,7 +15,7 @@ namespace JCPCars
 
             routes.MapRoute(
                 name: "ProductDetails",
-                url: "album-{id}.html",
+                url: "auto-{id}.html",
                 defaults: new { controller = "Store", action = "Details" }
             );
 

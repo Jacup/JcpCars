@@ -8,11 +8,11 @@
     <ul>
         @foreach (var serie in Model.Series)
         {
-        <li>
-            <a href="@Url.Action("List", "Store", new { seriename = serie.Name.ToLower() })">
+            <li>
+                <a href="@Url.Action("List", "Store", new { seriename = serie.Name.ToLower() })">
                     @serie.Name
                 </a>
-        </li>
+            </li>
         }
     </ul>
     <a href="">
@@ -22,16 +22,18 @@
 
 <section>
     <ul class="ThreeColumnsCarsList large-cover-list">
-        <li>
-            <article>
-                <a class="productdetailslink" href="asd">
-                    <div class="newFlag"></div>
-                    <img class="car-image" src="../Content/Cars/1.png" />
-                    <h1>
-                        Testowy obrazek
-                    </h1>
-                </a>
-            </article>
-        </li>
+        @foreach (var newArrival in Model.NewArrivals)
+        {
+            <li>
+                <article>
+                    <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = newArrival.CarId })">
+                        <img class="car-image" src="@Url.CarIconPath(newArrival.PictureFileName)" />
+                        <h1>
+                            @newArrival.CarBrand @newArrival.CarModel
+                        </h1>
+                    </a>
+                </article>
+            </li>
+        }
     </ul>
 </section>

@@ -223,14 +223,8 @@
     <Content Include="Content\Cars\2.png" />
     <Content Include="Content\Cars\3.png" />
     <Content Include="Content\Cars\4.jpg" />
-    <Content Include="Content\Cars\5.png" />
-    <Content Include="Content\Cars\594358f0-3ef5-4920-b7c0-6d86c282df20.jpg" />
-    <Content Include="Content\Cars\6.png" />
-    <Content Include="Content\Cars\7.png" />
-    <Content Include="Content\Cars\8.png" />
-    <Content Include="Content\Cars\9.png" />
-    <Content Include="Content\Cars\aa9760ef-b6dc-4242-a788-2573cfc4732d.jpg" />
-    <Content Include="Content\Cars\bb2bddf4-3ead-4ab2-86e3-2e56239d0a1b.png" />
+    <Content Include="Content\Cars\5.jpg" />
+    <Content Include="Content\Cars\6.jpg" />
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\ajax-loader.png" />
     <Content Include="Content\Images\baner-main.png" />
@@ -327,10 +321,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Prototype\Main.html" />
-    <Content Include="Prototype\Main.min.html">
-      <DependentUpon>Main.html</DependentUpon>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="bundleconfig.json" />
@@ -385,6 +375,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Prototype\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
