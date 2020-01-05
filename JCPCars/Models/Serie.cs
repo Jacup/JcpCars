@@ -13,7 +13,6 @@ namespace JCPCars.Models
         public int SerieId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string IconFilename { get; set; }
         public ICollection<Car> Car { get; set; }
     }
 }

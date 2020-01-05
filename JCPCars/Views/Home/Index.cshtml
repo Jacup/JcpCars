@@ -1,113 +1,36 @@
-﻿@{
+﻿@model JCPCars.ViewModels.HomeViewModel
+@{
     ViewBag.Title = "JcpCars";
 }
 
-    <nav class="types-horizontal">
-        <ul>
+<nav class="types-horizontal">
+    <ul>
+        @foreach (var serie in Model.Series)
+        {
             <li>
-                <a href="" style="background-image: url(../Content/Genre-icons/rock.png); ">
-                    Hot-hatch
+                <a href="@Url.Action("List", "Store", new { seriename = serie.Name.ToLower() })" style="background-image: url(../Content/Genre-icons/rock.png); ">
+                    @serie.Name
                 </a>
             </li>
-            <li>
-                <a href="" style="background-image: url(../Content/Genre-icons/rnb.png); ">
-                    Limuzyny
-                </a>
-            </li>
-            <li>
-                <a href="" style="background-image: url(../Content/Genre-icons/electro.png); ">
-                    Kombi
-                </a>
-            </li>
-            <li> 
-                <a href="" style="background-image: url(../Content/Genre-icons/metal.png); ">
-                    Cabrio
-                </a>
-            </li>
-            <li>
-                <a href="" style="background-image: url(../Content/Genre-icons/pop.png); ">
-                    Supercars
-                </a>
-            </li>
+        }
+    </ul>
+    <a href="">
+        <img id="baner-main" src="../Content/Images/baner-main.png" />
+    </a>
+</nav>
 
-        </ul>
-        <a href="">
-            <img id="baner-main" src="../Content/Images/baner-main.png" />
-        </a>
-    </nav>
-
-    <section>
-        <ul class="ThreeColumnsCarsList large-cover-list">
-            <li>
-                <article>
-                    <a class="productdetailslink" href="asd">
-                        <div class="newFlag"></div>
-                        <img class="car-image" src="../Content/Cars/1.png" />
-                        <h1>
-                            Testowy obrazek
-                        </h1>
-                    </a>
-                </article>
-            </li>
-            <li>
-                <article>
-                    <a class="productdetailslink" href="asd">
-                        <div class="newFlag"></div>
-                        <img class="car-image" src="../Content/Cars/2.png" />
-                        <h1>
-                            Testowy obrazek
-                        </h1>
-                    </a>
-                </article>
-            </li>
-            <li>
-                <article>
-                    <a class="productdetailslink" href="asd">
-                        <div class="newFlag"></div>
-                        <img class="car-image" src="../Content/Cars/3.png" />
-                        <h1>
-                            Testowy obrazek
-                        </h1>
-                    </a>
-                </article>
-            </li>
-        </ul>
-    </section>
-
-    <section>
-        <ul class="ThreeColumnsCarsList large-cover-list">
-            <li>
-                <article>
-                    <a class="productdetailslink" href="asd">
-                        <div class="bestsellerFlag"></div>
-                        <img class="car-image" src="../Content/Cars/1.png" />
-                        <h1>
-                            Testowy obrazek
-                        </h1>
-                    </a>
-                </article>
-            </li>
-            <li>
-                <article>
-                    <a class="productdetailslink" href="asd">
-                        <div class="bestsellerFlag"></div>
-                        <img class="car-image" src="../Content/Cars/2.png" />
-                        <h1>
-                            Testowy obrazek
-                        </h1>
-                    </a>
-                </article>
-            </li>
-            <li>
-                <article>
-                    <a class="productdetailslink" href="asd">
-                        <div class="bestsellerFlag"></div>
-                        <img class="car-image" src="../Content/Cars/3.png" />
-                        <h1>
-                            Testowy obrazek
-                        </h1>
-                    </a>
-                </article>
-            </li>
-        </ul>
-    </section>
+<section>
+    <ul class="ThreeColumnsCarsList large-cover-list">
+        <li>
+            <article>
+                <a class="productdetailslink" href="asd">
+                    <div class="newFlag"></div>
+                    <img class="car-image" src="../Content/Cars/1.png" />
+                    <h1>
+                        Testowy obrazek
+                    </h1>
+                </a>
+            </article>
+        </li>
+    </ul>
+</section>

@@ -1,5 +1,6 @@
 ﻿using JCPCars.DAL;
 using JCPCars.Models;
+using JCPCars.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +12,19 @@ namespace JCPCars.Controllers
     public class HomeController : Controller
     {
         private StoreContext db = new StoreContext();
-
+      
         public ActionResult Index()
         {
-            //Serie newSerie = new Serie { Name = "Cabrio", Description = " Opis kategorii", IconFilename = "1.png" };
-            //db.Series.Add(newSerie);
-            //db.SaveChanges();
+            var series = db.Series.ToList();
+            var newArrivals = db.Cars.Where(a => !a.IsHidden).OrderByDescending(a => a.DateAdded).Take(3).ToList();
 
-            var seriesList = db.Series.ToList();
+            var vm = new HomeViewModel()
+            {
+                Series = series,
+                NewArrivals = newArrivals
+            };
 
-            return View();
+            return View(vm);
         }
 
         public ActionResult StaticContent(string viewname)

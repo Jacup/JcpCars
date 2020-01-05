@@ -22,11 +22,11 @@ namespace JCPCars.DAL
         {
             var series = new List<Serie>
             {
-                new Serie() {SerieId = 1, Name = "Hot-hatch", IconFilename = "hot-hatch.png"},
-                new Serie() { SerieId = 2, Name = "Limuzyny", IconFilename = "limuzyny.png" },
-                new Serie() { SerieId = 3, Name = "Kombi", IconFilename = "kombi.png" },
-                new Serie() { SerieId = 4, Name = "Cabrio", IconFilename = "cabrio.png" },
-                new Serie() { SerieId = 5, Name = "Supercars", IconFilename = "supercars.png" }
+                new Serie() {SerieId = 1, Name = "Hot-hatch"},
+                new Serie() { SerieId = 2, Name = "Limuzyny"},
+                new Serie() { SerieId = 3, Name = "Kombi"},
+                new Serie() { SerieId = 4, Name = "Cabrio"},
+                new Serie() { SerieId = 5, Name = "Supercars"}
             };
             series.ForEach(g => context.Series.AddOrUpdate(g));
             context.SaveChanges();
