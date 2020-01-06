@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "JCPCars";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -12,6 +12,7 @@
         <div id="breadcrumb-section">
             <img src="@Url.Content("~/Content/Images/home-small.png")" />
             @Html.MvcSiteMap().SiteMapPath()
+            @*@Model.SerieId*@
         </div>
 
         @Html.Partial("_CarList")

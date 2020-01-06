@@ -1,11 +1,11 @@
 ﻿@model JCPCars.Models.Car
 @using JCPCars.Infrastructure
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.CarBrand + " " + Model.CarModel;
 }
 <div id="productlist-content">
 
-    @Html.Action("SeriesMenu")
+    @Html.Action("SeriesMenu")  
 
     <div id="productlist-rightsection">
         <div id="breadcrumb-section">
