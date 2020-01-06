@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="productlist-content">
+
+    @Html.Action("SeriesMenu", "Store")
+
+    <div id="productlist-rightsection">
+        <div id="breadcrumb-section">
+            <img src="@Url.Content("~/Content/Images/home-small.png")" />
+            @Html.MvcSiteMap().SiteMapPath()
+        </div>
+        <section class="content-section">
+            <div class="section-header" style="margin-bottom: 0px;">
+                <h1>
+                    @RenderSection("SectionTitile", required: false)
+                </h1>
+            </div>
+            @RenderBody()
+        </section>
+    </div>
+</div>
+
+@section ScriptsBottom
+{ 
+    @RenderSection("ScriptsBottom", required: false)
+}
