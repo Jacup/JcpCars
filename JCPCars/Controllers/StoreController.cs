@@ -17,7 +17,9 @@ namespace JCPCars.Controllers
         
         public ActionResult Details(int id)
         {
-            return View();
+            var car = db.Cars.Find(id);
+
+            return View(car);
         }
 
         public ActionResult List(string seriename)
