@@ -322,7 +322,7 @@ ul.ThreeColumnsCoversList {
             position: absolute;
             width: 100%;
             font-weight: normal;
-            /* More intensive album title */
+            /* More intensive car title */
             /* font-family: 'Segoe UI Semibold', 'Segoe WP', 'Segoe UI'; */
             -webkit-transition: all 1s ease;
             -o-transition: all 1s ease;
@@ -338,7 +338,7 @@ ul.ThreeColumnsCoversList {
             transition: all 0.5s ease;
         }
 
-        ul.ThreeColumnsCoversList li a img.album-cover {
+        ul.ThreeColumnsCoversList li a img.car-cover {
             position: absolute;
             top: 0;
             left: 0;
@@ -352,7 +352,7 @@ ul.ThreeColumnsCoversList {
             transition: opacity 0.5s ease;
         }
 
-        ul.ThreeColumnsCoversList li a:hover img.album-cover {
+        ul.ThreeColumnsCoversList li a:hover img.car-cover {
             opacity: 0.8;
             -webkit-transition: opacity 1s ease;
             -o-transition: opacity 1s ease;

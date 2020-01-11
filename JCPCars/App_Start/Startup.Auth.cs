@@ -1,5 +1,4 @@
-﻿using JCPCars.App_Start;
-using JCPCars.DAL;
+﻿using JCPCars.DAL;
 using JCPCars.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -20,6 +19,7 @@ namespace JCPCars
         {
             app.CreatePerOwinContext(StoreContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -48,7 +48,6 @@ namespace JCPCars
             options.Scope.Add("email");
 
             app.UseFacebookAuthentication(options);
-
 
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()

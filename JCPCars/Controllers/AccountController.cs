@@ -1,23 +1,29 @@
-﻿using JCPCars.App_Start;
-using JCPCars.ViewModels;
+﻿using JCPCars.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.Owin.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using JCPCars.Models;
+using Microsoft.Owin.Security;
 using System.Threading.Tasks;
 
 namespace JCPCars.Controllers
 {
     public class AccountController : Controller
     {
+        public AccountController()
+        {
+        }
+
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
 
         private ApplicationUserManager _userManager;
-
         public ApplicationUserManager UserManager
         {
             get
@@ -30,8 +36,8 @@ namespace JCPCars.Controllers
             }
         }
 
-
         private ApplicationSignInManager _signInManager;
+
         public ApplicationSignInManager SignInManager
         {
             get
@@ -41,25 +47,18 @@ namespace JCPCars.Controllers
             private set { _signInManager = value; }
         }
 
-
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
-        }
-
-
-
-
-
-        // GET: Account
+        //
+        // GET: /Account/Login
+        [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
+
+
+        //
+        // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -69,7 +68,9 @@ namespace JCPCars.Controllers
             {
                 return View(model);
             }
-            
+
+            // This doen't count login failures towards lockout only two factor authentication
+            // To enable password failures to trigger lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
@@ -84,26 +85,35 @@ namespace JCPCars.Controllers
                     ModelState.AddModelError("loginerror", "Nieudana próba logowania.");
                     return View(model);
             }
-
         }
 
-        private ActionResult RedirectToLocal(string returnUrl)
+        private IAuthenticationManager AuthenticationManager
         {
-            if (Url.IsLocalUrl(returnUrl))
+            get
             {
-                return Redirect(returnUrl);
+                return HttpContext.GetOwinContext().Authentication;
             }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            AuthenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
 
-
-
+        //
+        // GET: /Account/Register
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -124,8 +134,18 @@ namespace JCPCars.Controllers
                 }
                 AddErrors(result);
             }
+
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         private void AddErrors(IdentityResult result)
@@ -136,21 +156,6 @@ namespace JCPCars.Controllers
             }
         }
 
-
-
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
-        {
-            AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
-        }
-
-
-
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -159,7 +164,6 @@ namespace JCPCars.Controllers
             // Request a redirect to the external login provider
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
-
 
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
@@ -207,8 +211,8 @@ namespace JCPCars.Controllers
         }
 
 
+        // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
-
 
         internal class ChallengeResult : HttpUnauthorizedResult
         {
@@ -238,7 +242,6 @@ namespace JCPCars.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
-
 
 
     }

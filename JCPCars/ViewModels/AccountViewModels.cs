@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace JCPCars.ViewModels
+namespace JCPCars.Models
 {
     public class LoginViewModel
     {

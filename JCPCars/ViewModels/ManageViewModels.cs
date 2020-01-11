@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JCPCars.ViewModels
+namespace JCPCars.Models
 {
     public class ManageCredentialsViewModel
     {
@@ -20,6 +20,7 @@ namespace JCPCars.ViewModels
         public IList<AuthenticationDescription> OtherLogins { get; set; }
         public bool ShowRemoveButton { get; set; }
 
+        public UserData UserData { get; set; }
     }
     public class SetPasswordViewModel
     {

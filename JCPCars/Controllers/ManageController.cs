@@ -14,8 +14,7 @@ using System.IO;
 using JCPCars.Infrastructure;
 using JCPCars.ViewModels;
 using System.Net;
-//using Hangfire;
-
+using Hangfire;
 namespace JCPCars.Controllers
 {
     [Authorize]
@@ -23,13 +22,13 @@ namespace JCPCars.Controllers
     {
         StoreContext db = new StoreContext();
 
-        //private IMailService mailService;
+        private IMailService mailService;
 
-        //public ManageController(StoreContext context, IMailService mailService)
-        //{
-        //    this.mailService = mailService;
-        //    this.db = context;
-        //}
+        public ManageController(StoreContext context, IMailService mailService)
+        {
+            this.mailService = mailService;
+            this.db = context;
+        }
 
         public ManageController(ApplicationUserManager userManager)
         {
@@ -105,33 +104,34 @@ namespace JCPCars.Controllers
                 CurrentLogins = userLogins,
                 OtherLogins = otherLogins,
                 ShowRemoveButton = user.PasswordHash != null || userLogins.Count > 1,
-                //UserData = user.UserData
+                UserData = user.UserData
             };
 
             return View(model);
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> ChangeProfile([Bind(Prefix = "UserData")]UserData userData)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-        //        user.UserData = userData;
-        //        var result = await UserManager.UpdateAsync(user);
 
-        //        AddErrors(result);
-        //    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeProfile([Bind(Prefix = "UserData")]UserData userData)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                user.UserData = userData;
+                var result = await UserManager.UpdateAsync(user);
 
-        //    if (!ModelState.IsValid)
-        //    {
-        //        TempData["ViewData"] = ViewData;
-        //        return RedirectToAction("Index");
-        //    }
+                AddErrors(result);
+            }
 
-        //    return RedirectToAction("Index");
-        //}
+            if (!ModelState.IsValid)
+            {
+                TempData["ViewData"] = ViewData;
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index");
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -203,27 +203,49 @@ namespace JCPCars.Controllers
             return RedirectToAction("Index", new { Message = message });
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
-        //{
-        //    ManageMessageId? message;
-        //    var result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
-        //    if (result.Succeeded)
-        //    {
-        //        var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-        //        if (user != null)
-        //        {
-        //            await SignInAsync(user, isPersistent: false);
-        //        }
-        //        message = ManageMessageId.RemoveLoginSuccess;
-        //    }
-        //    else
-        //    {
-        //        message = ManageMessageId.Error;
-        //    }
-        //    return RedirectToAction("Index", new { Message = message });
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LinkLogin(string provider)
+        {
+            // Request a redirect to the external login provider to link a login for the current user
+            return new AccountController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Manage"), User.Identity.GetUserId());
+        }
+
+        // Used for XSRF protection when adding external logins
+        private const string XsrfKey = "XsrfId";
+
+        public async Task<ActionResult> LinkLoginCallback()
+        {
+            var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
+            if (loginInfo == null)
+            {
+                return RedirectToAction("Index", new { Message = ManageMessageId.Error });
+            }
+            var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
+            return result.Succeeded ? RedirectToAction("Index", new { Message = ManageMessageId.LinkSuccess }) : RedirectToAction("Index", new { Message = ManageMessageId.Error });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
+        {
+            ManageMessageId? message;
+            var result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
+            if (result.Succeeded)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    await SignInAsync(user, isPersistent: false);
+                }
+                message = ManageMessageId.RemoveLoginSuccess;
+            }
+            else
+            {
+                message = ManageMessageId.Error;
+            }
+            return RedirectToAction("Index", new { Message = message });
+        }
 
         private void AddErrors(IdentityResult result)
         {
@@ -299,7 +321,7 @@ namespace JCPCars.Controllers
         //    // This could also be used (but problems when hosted on Azure Websites)
         //    // if (Request.IsLocal)            
 
-        //    var orderToModify = db.Orders.Include("OrderItems").Include("OrderItems.Album").SingleOrDefault(o => o.OrderId == orderid && o.LastName == lastname);
+        //    var orderToModify = db.Orders.Include("OrderItems").Include("OrderItems.Car").SingleOrDefault(o => o.OrderId == orderid && o.LastName == lastname);
 
         //    if (orderToModify == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 
@@ -322,7 +344,7 @@ namespace JCPCars.Controllers
         //    // This could also be used (but problems when hosted on Azure Websites)
         //    // if (Request.IsLocal)            
 
-        //    var order = db.Orders.Include("OrderItems").Include("OrderItems.Album").SingleOrDefault(o => o.OrderId == orderid && o.LastName == lastname);
+        //    var order = db.Orders.Include("OrderItems").Include("OrderItems.Car").SingleOrDefault(o => o.OrderId == orderid && o.LastName == lastname);
 
         //    if (order == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 

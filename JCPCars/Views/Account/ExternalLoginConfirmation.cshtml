@@ -1,8 +1,13 @@
-﻿@model  JCPCars.Models.RegisterViewModel
+﻿@model JCPCars.Models.RegisterViewModel
 
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_RightSectionLayout.cshtml";
+}
+
+@section SectionTitle
+{
+    Powiąż swoje konto
 }
 
 <div>
@@ -50,8 +55,8 @@
             </tr>
             <tr>
                 <td></td>
-                <td colspan="2" style="text-align: right; padding-right: 20px;">
-                    <input type="submit" value="Zarejestruj" class="submitLink" style="height: 40px; text-align: right; margin: 0px; padding: 0px;" />
+                <td colspan="2" style="text-align: left; padding: 0px; margin: 0px;">
+                    <input type="submit" value="Zarejestruj" class="submitLink" style=" height: 40px; text-align: left; margin: 0px; padding: 0px;" />
                 </td>
             </tr>
         </table>
@@ -61,9 +66,3 @@
 </div>
 
 
-@section ScriptsBottom
-{
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-}
