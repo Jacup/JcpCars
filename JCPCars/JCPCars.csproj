@@ -411,6 +411,7 @@
     <Content Include="Views\Shared\_ManageLayout.cshtml" />
     <Content Include="Views\Manage\AddProduct.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

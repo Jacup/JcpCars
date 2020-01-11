@@ -61,8 +61,8 @@ namespace JCPCars.DAL
 
             //var userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             //var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
-            const string name = "admin@spodigly.pl";
-            const string password = "P@ssw0rd";
+            const string name = "jcp@jcp.com";
+            const string password = "Admin123$";
             const string roleName = "Admin";
 
 

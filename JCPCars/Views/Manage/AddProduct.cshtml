@@ -24,41 +24,36 @@
             @Html.ValidationSummary()
         </div>
 
-        @Html.HiddenFor(o => o.Album.AlbumId)
-        @Html.HiddenFor(o => o.Album.DateAdded)
-        @Html.HiddenFor(o => o.Album.CoverFileName)
+        @Html.HiddenFor(o => o.Car.CarId)
+        @Html.HiddenFor(o => o.Car.DateAdded)
+        @Html.HiddenFor(o => o.Car.PictureFileName)
 
         <div style="text-align: center;">
             <table id="albumedit-address-table">
                 <tr>
-                    <td>@Html.LabelFor(o => o.Album.ArtistName, "Wykonawca:")</td>
-                    <td>@Html.TextBoxFor(o => o.Album.ArtistName)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Album.ArtistName)</td>
+                    <td>@Html.LabelFor(o => o.Car.CarBrand, "Wykonawca:")</td>
+                    <td>@Html.TextBoxFor(o => o.Car.CarBrand)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Car.CarBrand)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Album.AlbumTitle, "Album:")</td>
-                    <td>@Html.TextBoxFor(o => o.Album.AlbumTitle)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Album.AlbumTitle)</td>
+                    <td>@Html.LabelFor(o => o.Car.CarModel, "Car:")</td>
+                    <td>@Html.TextBoxFor(o => o.Car.CarModel)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Car.CarModel)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Album.Description, "Opis:")</td>
-                    <td>@Html.TextBoxFor(o => o.Album.Description)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Album.Description)</td>
+                    <td>@Html.LabelFor(o => o.Car.Description, "Opis:")</td>
+                    <td>@Html.TextBoxFor(o => o.Car.Description)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Car.Description)</td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Genres, "Gatunek:")</td>
-                    <td>@Html.DropDownListFor(m => m.Album.GenreId, new SelectList(Model.Genres, "GenreId", "Name", Model.Genres.First().GenreId))</td>
+                    <td>@Html.LabelFor(o => o.Series, "Gatunek:")</td>
+                    <td>@Html.DropDownListFor(m => m.Car.SerieId, new SelectList(Model.Series, "GenreId", "Name", Model.Genres.First().GenreId))</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>@Html.LabelFor(o => o.Album.Price, "Cena:")</td>
-                    <td>@Html.TextBoxFor(o => o.Album.Price)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Album.Price)</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(o => o.Album.IsBestseller, "Bestseller:")</td>
-                    <td>@Html.CheckBoxFor(o => o.Album.IsBestseller)</td>
-                    <td></td>
+                    <td>@Html.LabelFor(o => o.Car.Price, "Cena:")</td>
+                    <td>@Html.TextBoxFor(o => o.Car.Price)</td>
+                    <td>@Html.ValidationMessageFor(o => o.Car.Price)</td>
                 </tr>
 
                 @if (ViewBag.EditMode == null || !ViewBag.EditMode)
@@ -78,17 +73,17 @@
                     <td style="text-align: left">
                         @if (ViewBag.EditMode)
                         {
-                            if (Model.Album.IsHidden)
+                            if (Model.Car.IsHidden)
                             {
                                 @* A bit dangerous - CSRF. Nested form.. Need to use form attr or JS *@
-                                <a href="@Url.Action("UnhideProduct", "Manage", new { albumId = Model.Album.AlbumId })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                <a href="@Url.Action("UnhideProduct", "Manage", new { albumId = Model.Car.CarId })" style="display: block; margin-top: 15px; font-weight: bold;">
                                     Przywróć
                                 </a>
                             }
                             else
                             {
                                 @* A bit dangerous - CSRF. Nested form.. Need to use form attr or JS *@
-                                <a href="@Url.Action("HideProduct", "Manage", new { albumId = Model.Album.AlbumId })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                <a href="@Url.Action("HideProduct", "Manage", new { albumId = Model.Car.CarId })" style="display: block; margin-top: 15px; font-weight: bold;">
                                     Usuń
                                 </a>
                             }

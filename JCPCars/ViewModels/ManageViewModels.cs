@@ -1,12 +1,12 @@
-﻿using JCPCars.Models;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JCPCars.Models;
 
 namespace JCPCars.Models
 {
@@ -15,7 +15,7 @@ namespace JCPCars.Models
         public bool HasPassword { get; set; }
         public SetPasswordViewModel SetPasswordViewModel { get; set; }
         public ChangePasswordViewModel ChangePasswordViewModel { get; set; }
-        public JCPCars.Controllers.ManageController.ManageMessageId? Message { get; set; }
+        public Controllers.ManageController.ManageMessageId? Message { get; set; }
         public IList<UserLoginInfo> CurrentLogins { get; set; }
         public IList<AuthenticationDescription> OtherLogins { get; set; }
         public bool ShowRemoveButton { get; set; }

@@ -15,6 +15,7 @@ using JCPCars.Infrastructure;
 using JCPCars.ViewModels;
 using System.Net;
 using Hangfire;
+
 namespace JCPCars.Controllers
 {
     [Authorize]
@@ -303,7 +304,7 @@ namespace JCPCars.Controllers
         //        //IMailService mailService = new HangFirePostalMailService();
         //        //mailService.SendOrderShippedEmail(orderToModify);
 
-        //        mailService.SendOrderShippedEmail(orderToModify);
+        //        //mailService.SendOrderShippedEmail(orderToModify);
 
         //        //dynamic email = new Postal.Email("OrderShipped");
         //        //email.To = orderToModify.Email;
@@ -315,50 +316,50 @@ namespace JCPCars.Controllers
         //    return order.OrderState;
         //}
 
-        //[AllowAnonymous]
-        //public ActionResult SendStatusEmail(int orderid, string lastname)
-        //{
-        //    // This could also be used (but problems when hosted on Azure Websites)
-        //    // if (Request.IsLocal)            
+        [AllowAnonymous]
+        public ActionResult SendStatusEmail(int orderid, string lastname)
+        {
+            // This could also be used (but problems when hosted on Azure Websites)
+            // if (Request.IsLocal)            
 
-        //    var orderToModify = db.Orders.Include("OrderItems").Include("OrderItems.Car").SingleOrDefault(o => o.OrderId == orderid && o.LastName == lastname);
+            //var orderToModify = db.Orders.Include("OrderItems").Include("OrderItems.Car").SingleOrDefault(o => o.OrderId == orderid && o.LastName == lastname);
 
-        //    if (orderToModify == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            //if (orderToModify == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 
-        //    OrderShippedEmail email = new OrderShippedEmail();
-        //    email.To = orderToModify.Email;
-        //    email.OrderId = orderToModify.OrderId;
-        //    email.FullAddress = string.Format("{0} {1}, {2}, {3}", orderToModify.FirstName, orderToModify.LastName, orderToModify.Address, orderToModify.CodeAndCity);
-        //    email.Send();
+            //OrderShippedEmail email = new OrderShippedEmail();
+            //email.To = orderToModify.Email;
+            //email.OrderId = orderToModify.OrderId;
+            //email.FullAddress = string.Format("{0} {1}, {2}, {3}", orderToModify.FirstName, orderToModify.LastName, orderToModify.Address, orderToModify.CodeAndCity);
+            //email.Send();
 
-        //    return new HttpStatusCodeResult(HttpStatusCode.OK);
-        //}
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
 
-        //[AllowAnonymous]
-        //public ActionResult SendConfirmationEmail(int orderid, string lastname)
-        //{
-        //    // orderid and lastname as a basic form of auth
+        [AllowAnonymous]
+        public ActionResult SendConfirmationEmail(int orderid, string lastname)
+        {
+            // orderid and lastname as a basic form of auth
 
-        //    // Also might be called by scheduler (ie. Azure scheduler), pinging endpoint and using some kind of queue / db
+            // Also might be called by scheduler (ie. Azure scheduler), pinging endpoint and using some kind of queue / db
 
-        //    // This could also be used (but problems when hosted on Azure Websites)
-        //    // if (Request.IsLocal)            
+            // This could also be used (but problems when hosted on Azure Websites)
+            // if (Request.IsLocal)            
 
-        //    var order = db.Orders.Include("OrderItems").Include("OrderItems.Car").SingleOrDefault(o => o.OrderId == orderid && o.LastName == lastname);
+            //var order = db.Orders.Include("OrderItems").Include("OrderItems.Car").SingleOrDefault(o => o.OrderId == orderid && o.LastName == lastname);
 
-        //    if (order == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            //if (order == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 
-        //    OrderConfirmationEmail email = new OrderConfirmationEmail();
-        //    email.To = order.Email;
-        //    email.Cost = order.TotalPrice;
-        //    email.OrderNumber = order.OrderId;
-        //    email.FullAddress = string.Format("{0} {1}, {2}, {3}", order.FirstName, order.LastName, order.Address, order.CodeAndCity);
-        //    email.OrderItems = order.OrderItems;
-        //    email.CoverPath = AppConfig.PhotosFolderRelative;
-        //    email.Send();
+            //OrderConfirmationEmail email = new OrderConfirmationEmail();
+            //email.To = order.Email;
+            //email.Cost = order.TotalPrice;
+            //email.OrderNumber = order.OrderId;
+            //email.FullAddress = string.Format("{0} {1}, {2}, {3}", order.FirstName, order.LastName, order.Address, order.CodeAndCity);
+            //email.OrderItems = order.OrderItems;
+            //email.CoverPath = AppConfig.PhotosFolderRelative;
+            //email.Send();
 
-        //    return new HttpStatusCodeResult(HttpStatusCode.OK);
-        //}
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
 
         [Authorize(Roles = "Admin")]
         public ActionResult AddProduct(int? carId, bool? confirmSuccess)

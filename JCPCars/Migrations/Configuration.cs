@@ -16,7 +16,7 @@
         protected override void Seed(JCPCars.DAL.StoreContext context)
         {
             StoreInitializer.SeedStoreData(context);
-            
+            StoreInitializer.InitializeIdentityForEF(context);
             
             
             

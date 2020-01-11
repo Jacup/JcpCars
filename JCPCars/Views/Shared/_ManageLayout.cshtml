@@ -36,12 +36,6 @@
             <a class="manageLink" href="@Url.Action("Index", "Manage")">
                 Twoje dane
             </a>
-            @if (@User.IsInRole("Admin"))
-            {
-                <a class="manageLink" href="@Url.Action("AddProduct", "Manage")">
-                    Dodaj
-                </a>
-            }
             @Html.Partial("_LoginPartial")
 
         </div>
