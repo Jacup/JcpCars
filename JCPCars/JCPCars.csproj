@@ -225,9 +225,17 @@
     <Compile Include="Migrations\202001051813208_RemovedSeriesIcon.designer.cs">
       <DependentUpon>202001051813208_RemovedSeriesIcon.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001112155207_final1.cs" />
-    <Compile Include="Migrations\202001112155207_final1.designer.cs">
-      <DependentUpon>202001112155207_final1.cs</DependentUpon>
+    <Compile Include="Migrations\202001081827310_1.cs" />
+    <Compile Include="Migrations\202001081827310_1.designer.cs">
+      <DependentUpon>202001081827310_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001082010527_addedAccountsv2.cs" />
+    <Compile Include="Migrations\202001082010527_addedAccountsv2.designer.cs">
+      <DependentUpon>202001082010527_addedAccountsv2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001112001054_new1.cs" />
+    <Compile Include="Migrations\202001112001054_new1.designer.cs">
+      <DependentUpon>202001112001054_new1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
@@ -465,8 +473,14 @@
     <EmbeddedResource Include="Migrations\202001051813208_RemovedSeriesIcon.resx">
       <DependentUpon>202001051813208_RemovedSeriesIcon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001112155207_final1.resx">
-      <DependentUpon>202001112155207_final1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001081827310_1.resx">
+      <DependentUpon>202001081827310_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001082010527_addedAccountsv2.resx">
+      <DependentUpon>202001082010527_addedAccountsv2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001112001054_new1.resx">
+      <DependentUpon>202001112001054_new1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
