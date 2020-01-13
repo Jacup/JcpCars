@@ -1,27 +1,30 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using JCPCars.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 
 namespace JCPCars.Models
 {
-    public class ManageCredentialsViewModel
+    public class IndexViewModel
     {
         public bool HasPassword { get; set; }
-        public SetPasswordViewModel SetPasswordViewModel { get; set; }
-        public ChangePasswordViewModel ChangePasswordViewModel { get; set; }
-        public Controllers.ManageController.ManageMessageId? Message { get; set; }
+        public IList<UserLoginInfo> Logins { get; set; }
+        public string PhoneNumber { get; set; }
+        public bool TwoFactor { get; set; }
+        public bool BrowserRemembered { get; set; }
+    }
+
+    public class ManageLoginsViewModel
+    {
         public IList<UserLoginInfo> CurrentLogins { get; set; }
         public IList<AuthenticationDescription> OtherLogins { get; set; }
-        public bool ShowRemoveButton { get; set; }
-
-        public UserData UserData { get; set; }
     }
+
+    public class FactorViewModel
+    {
+        public string Purpose { get; set; }
+    }
+
     public class SetPasswordViewModel
     {
         [Required]
@@ -55,10 +58,29 @@ namespace JCPCars.Models
         public string ConfirmPassword { get; set; }
     }
 
-    public class EditProductViewModel
+    public class AddPhoneNumberViewModel
     {
-        public Car Car { get; set; }
-        public IEnumerable<Serie> Series { get; set; }
-        public bool? ConfirmSuccess { get; set; }
+        [Required]
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string Number { get; set; }
+    }
+
+    public class VerifyPhoneNumberViewModel
+    {
+        [Required]
+        [Display(Name = "Code")]
+        public string Code { get; set; }
+
+        [Required]
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+    }
+
+    public class ConfigureTwoFactorViewModel
+    {
+        public string SelectedProvider { get; set; }
+        public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
 }
