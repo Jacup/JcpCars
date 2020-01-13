@@ -31,6 +31,7 @@ namespace JCPCars.Controllers
             this.db = context;
         }
 
+
         public ManageController(ApplicationUserManager userManager)
         {
             UserManager = userManager;
