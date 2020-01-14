@@ -1,87 +1,70 @@
-﻿@model JCPCars.Models.IndexViewModel
+﻿@model JCPCars.Models.ChangePasswordViewModel
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = "Change Password";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
+<hr />
 
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Password:</dt>
-        <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }
-            ]
-        </dd>
-        <dt>External Logins:</dt>
-        <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Manage", "ManageLogins") ]
-        </dd>
-        @*
-            Phone Numbers can used as a second factor of verification in a two-factor authentication system.
+<h2 style="margin-bottom: 30px">Twoje dane</h2>
 
-             See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication using SMS.
 
-             Uncomment the following block after you have set up two-factor authentication
-        *@
-        @*
-            <dt>Phone Number:</dt>
-            <dd>
-                @(Model.PhoneNumber ?? "None")
-                @if (Model.PhoneNumber != null)
-                {
-                    <br />
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
-                    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
-                    }
-                }
-                else
-                {
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
-                }
-            </dd>
-        *@
-        <dt>Two-Factor Authentication:</dt>
-        <dd>
-            <p>
-                There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication.
-            </p>
-            @*@if (Model.TwoFactor)
-                {
-                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Enabled
-                        <input type="submit" value="Disable" class="btn btn-link" />
-                        </text>
-                    }
-                }
-                else
-                {
-                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>Disabled
-                        <input type="submit" value="Enable" class="btn btn-link" />
-                        </text>
-                    }
-                }*@
-        </dd>
-    </dl>
-</div>
+
+
+<hr />
+
+
+<h2 style="margin-bottom: 30px">Zmiana hasła</h2>
+
+@using (Html.BeginForm("ChangePassword", "Manage", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <table id="password-table" style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>@Html.LabelFor(m => m.OldPassword, "Stare hasło:")</td>
+            <td>
+                @Html.PasswordFor(m => m.OldPassword)
+                <div class="login-validation-message">
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.NewPassword, "Nowe hasło:")</td>
+            <td>
+                @Html.PasswordFor(m => m.NewPassword)
+                @*<div class="login-validation-message">
+                        @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.NewPassword)
+                    </div>*@
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.ConfirmPassword, "Potwierdź hasło:")</td>
+            <td>
+                @Html.PasswordFor(m => m.ConfirmPassword)
+                @*<div class="login-validation-message">
+                        @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.ConfirmPassword)
+                    </div>*@
+            </td>
+        </tr>
+        <tr style="text-align: right;">
+            <td></td>
+            <td colspan="3">
+                <div class="checkbox" style="margin-bottom: 10px;">
+                </div>
+
+                <input type="submit" value="Zmień" class="submitLink" style="height: 40px;" />
+            </td>
+        </tr>
+    </table>
+}
+
+
+
+@section ScriptsBottom
+{
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}

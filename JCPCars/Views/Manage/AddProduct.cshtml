@@ -47,7 +47,7 @@
                 </tr>
                 <tr>
                     <td>@Html.LabelFor(o => o.Series, "Gatunek:")</td>
-                    <td>@Html.DropDownListFor(m => m.Car.SerieId, new SelectList(Model.Series, "GenreId", "Name", Model.Genres.First().GenreId))</td>
+                    <td>@Html.DropDownListFor(m => m.Car.SerieId, new SelectList(Model.Series, "SerieId", "Name", Model.Series.First().SerieId))</td>
                     <td></td>
                 </tr>
                 <tr>
@@ -76,14 +76,14 @@
                             if (Model.Car.IsHidden)
                             {
                                 @* A bit dangerous - CSRF. Nested form.. Need to use form attr or JS *@
-                                <a href="@Url.Action("UnhideProduct", "Manage", new { albumId = Model.Car.CarId })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                <a href="@Url.Action("UnhideProduct", "Manage", new { carId = Model.Car.CarId })" style="display: block; margin-top: 15px; font-weight: bold;">
                                     Przywróć
                                 </a>
                             }
                             else
                             {
                                 @* A bit dangerous - CSRF. Nested form.. Need to use form attr or JS *@
-                                <a href="@Url.Action("HideProduct", "Manage", new { albumId = Model.Car.CarId })" style="display: block; margin-top: 15px; font-weight: bold;">
+                                <a href="@Url.Action("HideProduct", "Manage", new { carId = Model.Car.CarId })" style="display: block; margin-top: 15px; font-weight: bold;">
                                     Usuń
                                 </a>
                             }

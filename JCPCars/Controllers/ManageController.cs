@@ -7,12 +7,19 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using JCPCars.Models;
+using System.IO;
+using JCPCars.DAL;
+using System.Data.Entity;
+using JCPCars.Infrastructure;
 
 namespace JCPCars.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
+        StoreContext db = new StoreContext();
+
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -99,119 +106,7 @@ namespace JCPCars.Controllers
             return RedirectToAction("ManageLogins", new { Message = message });
         }
 
-        //
-        // GET: /Manage/AddPhoneNumber
-        public ActionResult AddPhoneNumber()
-        {
-            return View();
-        }
 
-        //
-        // POST: /Manage/AddPhoneNumber
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-            // Generate the token and send it
-            var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), model.Number);
-            if (UserManager.SmsService != null)
-            {
-                var message = new IdentityMessage
-                {
-                    Destination = model.Number,
-                    Body = "Your security code is: " + code
-                };
-                await UserManager.SmsService.SendAsync(message);
-            }
-            return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
-        }
-
-        //
-        // POST: /Manage/EnableTwoFactorAuthentication
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> EnableTwoFactorAuthentication()
-        {
-            await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), true);
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            if (user != null)
-            {
-                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-            }
-            return RedirectToAction("Index", "Manage");
-        }
-
-        //
-        // POST: /Manage/DisableTwoFactorAuthentication
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DisableTwoFactorAuthentication()
-        {
-            await UserManager.SetTwoFactorEnabledAsync(User.Identity.GetUserId(), false);
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            if (user != null)
-            {
-                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-            }
-            return RedirectToAction("Index", "Manage");
-        }
-
-        //
-        // GET: /Manage/VerifyPhoneNumber
-        public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
-        {
-            var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), phoneNumber);
-            // Send an SMS through the SMS provider to verify the phone number
-            return phoneNumber == null ? View("Error") : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
-        }
-
-        //
-        // POST: /Manage/VerifyPhoneNumber
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> VerifyPhoneNumber(VerifyPhoneNumberViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-            var result = await UserManager.ChangePhoneNumberAsync(User.Identity.GetUserId(), model.PhoneNumber, model.Code);
-            if (result.Succeeded)
-            {
-                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                if (user != null)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                }
-                return RedirectToAction("Index", new { Message = ManageMessageId.AddPhoneSuccess });
-            }
-            // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "Failed to verify phone");
-            return View(model);
-        }
-
-        //
-        // POST: /Manage/RemovePhoneNumber
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> RemovePhoneNumber()
-        {
-            var result = await UserManager.SetPhoneNumberAsync(User.Identity.GetUserId(), null);
-            if (!result.Succeeded)
-            {
-                return RedirectToAction("Index", new { Message = ManageMessageId.Error });
-            }
-            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            if (user != null)
-            {
-                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-            }
-            return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
-        }
 
         //
         // GET: /Manage/ChangePassword
@@ -299,28 +194,7 @@ namespace JCPCars.Controllers
             });
         }
 
-        //
-        // POST: /Manage/LinkLogin
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult LinkLogin(string provider)
-        {
-            // Request a redirect to the external login provider to link a login for the current user
-            return new AccountController.ChallengeResult(provider, Url.Action("LinkLoginCallback", "Manage"), User.Identity.GetUserId());
-        }
 
-        //
-        // GET: /Manage/LinkLoginCallback
-        public async Task<ActionResult> LinkLoginCallback()
-        {
-            var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
-            if (loginInfo == null)
-            {
-                return RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
-            }
-            var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
-            return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
-        }
 
         protected override void Dispose(bool disposing)
         {
@@ -383,6 +257,104 @@ namespace JCPCars.Controllers
             RemovePhoneSuccess,
             Error
         }
+
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult AddProduct(int? carId, bool? confirmSuccess)
+        {
+            if (carId.HasValue)
+                ViewBag.EditMode = true;
+            else
+                ViewBag.EditMode = false;
+
+            var result = new EditProductViewModel();
+            var series = db.Series.ToArray();
+            result.Series = series;
+            result.ConfirmSuccess = confirmSuccess;
+
+            Car a;
+
+            if (!carId.HasValue)
+            {
+                a = new Car();
+            }
+            else
+            {
+                a = db.Cars.Find(carId);
+            }
+
+            result.Car = a;
+
+            return View(result);
+        }
+
+        [HttpPost]
+        public ActionResult AddProduct(HttpPostedFileBase file, EditProductViewModel model)
+        {
+            if (model.Car.CarId > 0)
+            {
+                // Saving existing entry
+
+                db.Entry(model.Car).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("AddProduct", new { confirmSuccess = true });
+            }
+            else
+            {
+                // Creating new entry
+
+                var f = Request.Form;
+                // Verify that the user selected a file
+                if (file != null && file.ContentLength > 0)
+                {
+                    // Generate filename
+
+                    var fileExt = Path.GetExtension(file.FileName);
+                    var filename = Guid.NewGuid() + fileExt;
+
+                    var path = Path.Combine(Server.MapPath(AppConfig.CarFolderRelative), filename);
+                    file.SaveAs(path);
+
+                    // Save info to DB
+                    model.Car.PictureFileName = filename;
+                    model.Car.DateAdded = DateTime.Now;
+
+                    db.Entry(model.Car).State = EntityState.Added;
+                    db.SaveChanges();
+
+                    return RedirectToAction("AddProduct", new { confirmSuccess = true });
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Nie wskazano pliku.");
+                    var series = db.Series.ToArray();
+                    model.Series = series;
+                    return View(model);
+                }
+            }
+
+        }
+
+        public ActionResult HideProduct(int albumId)
+        {
+            var car = db.Cars.Find(albumId);
+            car.IsHidden = true;
+            db.SaveChanges();
+
+            return RedirectToAction("AddProduct", new { confirmSuccess = true });
+        }
+
+        public ActionResult UnhideProduct(int albumId)
+        {
+            var car = db.Cars.Find(albumId);
+            car.IsHidden = false;
+            db.SaveChanges();
+
+            return RedirectToAction("AddProduct", new { confirmSuccess = true });
+        }
+
+
+
 
         #endregion
     }
