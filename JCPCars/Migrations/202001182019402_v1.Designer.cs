@@ -7,13 +7,13 @@ namespace JCPCars.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class RemovedSeriesIcon : IMigrationMetadata
+    public sealed partial class v1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RemovedSeriesIcon));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(v1));
         
         string IMigrationMetadata.Id
         {
-            get { return "202001051813208_RemovedSeriesIcon"; }
+            get { return "202001182019402_v1"; }
         }
         
         string IMigrationMetadata.Source

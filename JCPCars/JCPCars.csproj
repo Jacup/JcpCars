@@ -209,45 +209,9 @@
     <Compile Include="Infrastructure\IMailService.cs" />
     <Compile Include="Infrastructure\ProductListDynamicNodeProvider.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
-    <Compile Include="Migrations\202001041331355_InitialCreate.cs" />
-    <Compile Include="Migrations\202001041331355_InitialCreate.designer.cs">
-      <DependentUpon>202001041331355_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001041339326_AddedNewArrivals.cs" />
-    <Compile Include="Migrations\202001041339326_AddedNewArrivals.designer.cs">
-      <DependentUpon>202001041339326_AddedNewArrivals.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001041412524_RemoveNewArrivals.cs" />
-    <Compile Include="Migrations\202001041412524_RemoveNewArrivals.designer.cs">
-      <DependentUpon>202001041412524_RemoveNewArrivals.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001051813208_RemovedSeriesIcon.cs" />
-    <Compile Include="Migrations\202001051813208_RemovedSeriesIcon.designer.cs">
-      <DependentUpon>202001051813208_RemovedSeriesIcon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001081827310_1.cs" />
-    <Compile Include="Migrations\202001081827310_1.designer.cs">
-      <DependentUpon>202001081827310_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001082010527_addedAccountsv2.cs" />
-    <Compile Include="Migrations\202001082010527_addedAccountsv2.designer.cs">
-      <DependentUpon>202001082010527_addedAccountsv2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001112001054_new1.cs" />
-    <Compile Include="Migrations\202001112001054_new1.designer.cs">
-      <DependentUpon>202001112001054_new1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001132108417_TESTCleanupOfManageAndAccount.cs" />
-    <Compile Include="Migrations\202001132108417_TESTCleanupOfManageAndAccount.designer.cs">
-      <DependentUpon>202001132108417_TESTCleanupOfManageAndAccount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001181700080_priceValidato.cs" />
-    <Compile Include="Migrations\202001181700080_priceValidato.designer.cs">
-      <DependentUpon>202001181700080_priceValidato.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001181711253_priceValidator2.cs" />
-    <Compile Include="Migrations\202001181711253_priceValidator2.designer.cs">
-      <DependentUpon>202001181711253_priceValidator2.cs</DependentUpon>
+    <Compile Include="Migrations\202001182019402_v1.cs" />
+    <Compile Include="Migrations\202001182019402_v1.designer.cs">
+      <DependentUpon>202001182019402_v1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
@@ -470,35 +434,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001041331355_InitialCreate.resx">
-      <DependentUpon>202001041331355_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001041339326_AddedNewArrivals.resx">
-      <DependentUpon>202001041339326_AddedNewArrivals.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001041412524_RemoveNewArrivals.resx">
-      <DependentUpon>202001041412524_RemoveNewArrivals.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001051813208_RemovedSeriesIcon.resx">
-      <DependentUpon>202001051813208_RemovedSeriesIcon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001081827310_1.resx">
-      <DependentUpon>202001081827310_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001082010527_addedAccountsv2.resx">
-      <DependentUpon>202001082010527_addedAccountsv2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001112001054_new1.resx">
-      <DependentUpon>202001112001054_new1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001132108417_TESTCleanupOfManageAndAccount.resx">
-      <DependentUpon>202001132108417_TESTCleanupOfManageAndAccount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001181700080_priceValidato.resx">
-      <DependentUpon>202001181700080_priceValidato.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001181711253_priceValidator2.resx">
-      <DependentUpon>202001181711253_priceValidator2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001182019402_v1.resx">
+      <DependentUpon>202001182019402_v1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
