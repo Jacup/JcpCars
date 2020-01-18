@@ -1,64 +1,30 @@
-﻿@model JCPCars.Models.ChangePasswordViewModel
+﻿@model JCPCars.Models.IndexViewModel
 @{
-    ViewBag.Title = "Change Password";
+    ViewBag.Title = "Moje konto";
     Layout = "~/Views/Shared/_ManageLayout.cshtml";
 }
 
-<hr />
 
-<h2 style="margin-bottom: 30px">Twoje dane</h2>
+    <center><h1>@ViewBag.Title</h1></center>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <center>
+            [
+                @Html.ActionLink("Zmień hasło", "ChangePassword")
 
 
-
-
-<hr />
-
-
-<h2 style="margin-bottom: 30px">Zmiana hasła</h2>
-
-@using (Html.BeginForm("ChangePassword", "Manage", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-
-    <table id="password-table" style="margin-left: auto; margin-right: auto;">
-        <tr>
-            <td>@Html.LabelFor(m => m.OldPassword, "Stare hasło:")</td>
-            <td>
-                @Html.PasswordFor(m => m.OldPassword)
-                <div class="login-validation-message">
-                    @Html.ValidationSummary("", new { @class = "text-danger" })
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(m => m.NewPassword, "Nowe hasło:")</td>
-            <td>
-                @Html.PasswordFor(m => m.NewPassword)
-                @*<div class="login-validation-message">
-                        @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.NewPassword)
-                    </div>*@
-            </td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(m => m.ConfirmPassword, "Potwierdź hasło:")</td>
-            <td>
-                @Html.PasswordFor(m => m.ConfirmPassword)
-                @*<div class="login-validation-message">
-                        @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.ConfirmPassword)
-                    </div>*@
-            </td>
-        </tr>
-        <tr style="text-align: right;">
-            <td></td>
-            <td colspan="3">
-                <div class="checkbox" style="margin-bottom: 10px;">
-                </div>
-
-                <input type="submit" value="Zmień" class="submitLink" style="height: 40px;" />
-            </td>
-        </tr>
-    </table>
-}
+            ]
+        </center><br />
+        <center>
+            [
+            Usuń konto  
+            ]
+        </center>
+    </dl>
+</div>
 
 
 

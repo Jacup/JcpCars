@@ -241,13 +241,21 @@
     <Compile Include="Migrations\202001132108417_TESTCleanupOfManageAndAccount.designer.cs">
       <DependentUpon>202001132108417_TESTCleanupOfManageAndAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001181700080_priceValidato.cs" />
+    <Compile Include="Migrations\202001181700080_priceValidato.designer.cs">
+      <DependentUpon>202001181700080_priceValidato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001181711253_priceValidator2.cs" />
+    <Compile Include="Migrations\202001181711253_priceValidator2.designer.cs">
+      <DependentUpon>202001181711253_priceValidator2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Serie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Validators\IsCarBrand.cs" />
+    <Compile Include="Validators\PriceValidator.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
@@ -439,10 +447,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_ManageLayout.cshtml" />
     <Content Include="Views\Manage\AddProduct.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -485,6 +493,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001132108417_TESTCleanupOfManageAndAccount.resx">
       <DependentUpon>202001132108417_TESTCleanupOfManageAndAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001181700080_priceValidato.resx">
+      <DependentUpon>202001181700080_priceValidato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001181711253_priceValidator2.resx">
+      <DependentUpon>202001181711253_priceValidator2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

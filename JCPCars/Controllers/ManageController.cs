@@ -11,6 +11,7 @@ using System.IO;
 using JCPCars.DAL;
 using System.Data.Entity;
 using JCPCars.Infrastructure;
+using System.Net;
 
 namespace JCPCars.Controllers
 {
@@ -64,16 +65,13 @@ namespace JCPCars.Controllers
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                //: message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
                 : message == ManageMessageId.Error ? "An error has occurred."
-                //: message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
-                //: message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : "";
 
             var userId = User.Identity.GetUserId();
             var model = new IndexViewModel
             {
-                HasPassword = HasPassword(),
+                //HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
@@ -82,40 +80,14 @@ namespace JCPCars.Controllers
             return View(model);
         }
 
-        //
-        // POST: /Manage/RemoveLogin
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
-        {
-            ManageMessageId? message;
-            var result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
-            if (result.Succeeded)
-            {
-                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                if (user != null)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                }
-                message = ManageMessageId.RemoveLoginSuccess;
-            }
-            else
-            {
-                message = ManageMessageId.Error;
-            }
-            return RedirectToAction("ManageLogins", new { Message = message });
-        }
 
-
-
-        //
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
             return View();
         }
 
-        //
+
         // POST: /Manage/ChangePassword
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -139,7 +111,7 @@ namespace JCPCars.Controllers
             return View(model);
         }
 
-        //
+
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
         {
@@ -176,8 +148,7 @@ namespace JCPCars.Controllers
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
-                : message == ManageMessageId.Error ? "An error has occurred."
+                message == ManageMessageId.Error ? "An error has occurred."
                 : "";
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user == null)
@@ -227,34 +198,11 @@ namespace JCPCars.Controllers
             }
         }
 
-        private bool HasPassword()
-        {
-            var user = UserManager.FindById(User.Identity.GetUserId());
-            if (user != null)
-            {
-                return user.PasswordHash != null;
-            }
-            return false;
-        }
-
-        private bool HasPhoneNumber()
-        {
-            var user = UserManager.FindById(User.Identity.GetUserId());
-            if (user != null)
-            {
-                return user.PhoneNumber != null;
-            }
-            return false;
-        }
 
         public enum ManageMessageId
         {
-            AddPhoneSuccess,
             ChangePasswordSuccess,
-            SetTwoFactorSuccess,
             SetPasswordSuccess,
-            RemoveLoginSuccess,
-            RemovePhoneSuccess,
             Error
         }
 
@@ -305,7 +253,7 @@ namespace JCPCars.Controllers
 
                 var f = Request.Form;
                 // Verify that the user selected a file
-                if (file != null && file.ContentLength > 0)
+                if (file != null && file.ContentLength > 0 && ModelState.IsValid)
                 {
                     // Generate filename
 
@@ -335,26 +283,32 @@ namespace JCPCars.Controllers
 
         }
 
-        public ActionResult HideProduct(int albumId)
+        // GET: PersonalDetails/Delete
+        [Authorize(Roles = "Admin")]
+        public ActionResult Delete(int? carId)
         {
-            var car = db.Cars.Find(albumId);
-            car.IsHidden = true;
-            db.SaveChanges();
-
-            return RedirectToAction("AddProduct", new { confirmSuccess = true });
+            if (carId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Car car = db.Cars.Find(carId);
+            if (car == null)
+            {
+                return HttpNotFound();
+            }
+            return View(car);
         }
 
-        public ActionResult UnhideProduct(int albumId)
+        // POST: Cars/Delete
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int carId)
         {
-            var car = db.Cars.Find(albumId);
-            car.IsHidden = false;
+            Car car = db.Cars.Find(carId);
+            db.Cars.Remove(car);
             db.SaveChanges();
-
-            return RedirectToAction("AddProduct", new { confirmSuccess = true });
+            return RedirectToAction("Index");
         }
-
-
-
 
         #endregion
     }

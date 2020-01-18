@@ -44,9 +44,10 @@
                     @Model.Description
                 </div>
 
-                <div id="product-details-info">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit fusce.
-                </div>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <a href="@Url.Action("AddProduct", "Manage", new { carId = Model.CarId })" style="margin-top: 20px; font-weight: bold; display: block;">Edytuj</a>
+                }
             </div>
 
         </section>

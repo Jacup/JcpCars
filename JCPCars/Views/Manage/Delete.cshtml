@@ -1,0 +1,41 @@
+﻿@model JCPCars.Models.Car
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+}
+}
+
+<h3>Czy na pewno chcesz usunąć tę pozycję?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CarBrand):
+            @Html.DisplayFor(model => model.CarBrand)
+        </dt>
+        <dt></dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.CarModel):
+            @Html.DisplayFor(model => model.CarModel)
+        </dt>
+    </dl>
+    <br /><br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+            |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+
+
+@section ScriptsBottom
+{
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}

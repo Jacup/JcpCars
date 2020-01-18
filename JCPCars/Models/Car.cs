@@ -7,7 +7,7 @@ using System.Web;
 
 namespace JCPCars.Models
 {
-    public class Car
+    public class Car 
     {
         public int CarId { get; set; }
         public int SerieId { get; set; }
@@ -16,7 +16,7 @@ namespace JCPCars.Models
         [Required]
         public string CarModel { get; set; }
 
-        [IsCarBrand]
+        //[IsCarBrand]
         [Display(Name = "Marka")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Wprowadź markę pojazdu")]
@@ -28,11 +28,12 @@ namespace JCPCars.Models
 
         public string Description { get; set; }
 
-        public decimal Price { get; set; }
+        [Price(50)]
+        public int Price { get; set; }
 
-        public bool IsHidden { get; set; }
-
-
+        //[IsValidPhoneNumber]
+        [Display(Name = "Telefon do właściciela")]
+        public int Phone { get; set; }
 
         public virtual Serie Serie { get; set; }
     }

@@ -856,7 +856,7 @@ a.button-link:visited, a.button-link:link, a.button-link:active {
         margin-top: 5px;
     }
 
-#albumedit-address-table {
+#caredit-address-table {
     margin-left: auto;
     margin-right: auto;
     text-align: left;
@@ -865,44 +865,44 @@ a.button-link:visited, a.button-link:link, a.button-link:active {
     border-style: none;
 }
 
-    #albumedit-address-table tr {
+    #caredit-address-table tr {
         height: 40px;
     }
 
-        #albumedit-address-table tr td {
+        #caredit-address-table tr td {
             vertical-align: middle;
         }
 
-            #albumedit-address-table tr td:first-child {
+            #caredit-address-table tr td:first-child {
                 padding-right: 50px;
                 vertical-align: middle;
             }
 
-            #albumedit-address-table tr td:nth-child(2) {
+            #caredit-address-table tr td:nth-child(2) {
                 vertical-align: middle;
             }
 
-            #albumedit-address-table tr td:nth-child(3) {
+            #caredit-address-table tr td:nth-child(3) {
                 padding-left: 10px;
                 font-size: 15px;
                 color: red;
             }
 
-    #albumedit-address-table input {
+    #caredit-address-table input {
         border: 1px solid gray;
         width: 250px;
         height: 20px;
         padding: 5px;
     }
 
-    #albumedit-address-table textarea {
+    #caredit-address-table textarea {
         width: 250px;
         border: 1px solid gray;
         padding: 5px;
         margin-top: 5px;
     }
 
-    #albumedit-address-table select {
+    #caredit-address-table select {
         width: 100%;
         height: 30px;
     }
