@@ -209,17 +209,9 @@
     <Compile Include="Infrastructure\IMailService.cs" />
     <Compile Include="Infrastructure\ProductListDynamicNodeProvider.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
-    <Compile Include="Migrations\202001191205483_v1.cs" />
-    <Compile Include="Migrations\202001191205483_v1.designer.cs">
-      <DependentUpon>202001191205483_v1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001191207495_v2.cs" />
-    <Compile Include="Migrations\202001191207495_v2.designer.cs">
-      <DependentUpon>202001191207495_v2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001191404475_v3.cs" />
-    <Compile Include="Migrations\202001191404475_v3.designer.cs">
-      <DependentUpon>202001191404475_v3.cs</DependentUpon>
+    <Compile Include="Migrations\202001191446283_final.cs" />
+    <Compile Include="Migrations\202001191446283_final.designer.cs">
+      <DependentUpon>202001191446283_final.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
@@ -441,14 +433,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001191205483_v1.resx">
-      <DependentUpon>202001191205483_v1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001191207495_v2.resx">
-      <DependentUpon>202001191207495_v2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001191404475_v3.resx">
-      <DependentUpon>202001191404475_v3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001191446283_final.resx">
+      <DependentUpon>202001191446283_final.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

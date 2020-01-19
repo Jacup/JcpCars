@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class v1 : DbMigration
+    public partial class final : DbMigration
     {
         public override void Up()
         {
@@ -19,7 +19,6 @@
                         PictureFileName = c.String(),
                         Description = c.String(),
                         Price = c.Int(nullable: false),
-                        Phone = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.CarId)
                 .ForeignKey("dbo.Series", t => t.SerieId, cascadeDelete: true)
