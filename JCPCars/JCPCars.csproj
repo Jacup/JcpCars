@@ -246,7 +246,6 @@
     <Content Include="Content\Images\fb-login.png" />
     <Content Include="Content\Images\fb-share.png" />
     <Content Include="Content\Images\fb_white.png" />
-    <Content Include="Content\Images\footer-cd.png" />
     <Content Include="Content\Images\google-login.png" />
     <Content Include="Content\Images\home-small.png" />
     <Content Include="Content\Images\icons-18-black.png" />
@@ -366,7 +365,6 @@
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\PublishProfiles\JCPCars - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -422,6 +420,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
