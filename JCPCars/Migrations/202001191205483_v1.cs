@@ -8,6 +8,34 @@
         public override void Up()
         {
             CreateTable(
+                "dbo.Cars",
+                c => new
+                    {
+                        CarId = c.Int(nullable: false, identity: true),
+                        SerieId = c.Int(nullable: false),
+                        CarModel = c.String(nullable: false),
+                        CarBrand = c.String(nullable: false),
+                        DateAdded = c.DateTime(nullable: false),
+                        PictureFileName = c.String(),
+                        Description = c.String(),
+                        Price = c.Int(nullable: false),
+                        Phone = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.CarId)
+                .ForeignKey("dbo.Series", t => t.SerieId, cascadeDelete: true)
+                .Index(t => t.SerieId);
+            
+            CreateTable(
+                "dbo.Series",
+                c => new
+                    {
+                        SerieId = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Description = c.String(),
+                    })
+                .PrimaryKey(t => t.SerieId);
+            
+            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -75,31 +103,29 @@
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
-            AddColumn("dbo.Cars", "Phone", c => c.Int(nullable: false));
-            AlterColumn("dbo.Cars", "Price", c => c.Int(nullable: false));
-            DropColumn("dbo.Cars", "IsHidden");
         }
         
         public override void Down()
         {
-            AddColumn("dbo.Cars", "IsHidden", c => c.Boolean(nullable: false));
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Cars", "SerieId", "dbo.Series");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            AlterColumn("dbo.Cars", "Price", c => c.Decimal(nullable: false, precision: 18, scale: 2));
-            DropColumn("dbo.Cars", "Phone");
+            DropIndex("dbo.Cars", new[] { "SerieId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Series");
+            DropTable("dbo.Cars");
         }
     }
 }

@@ -134,7 +134,7 @@ a:hover, a:visited, a:link, a:active {
 #contact-header {
     width: 233px;
     height: 42px;
-    background-color: #39312E;
+    background-color: #2471A3;
     color: white;
     float: left;
     line-height: 40px;
@@ -148,7 +148,7 @@ a:hover, a:visited, a:link, a:active {
 #cart-header-link {
     width: 143px;
     height: 42px;
-    background-color: #39312E;
+    background-color: #2471A3;
     color: white;
     float: right;
     line-height: 40px;
@@ -159,7 +159,7 @@ a:hover, a:visited, a:link, a:active {
     #cart-header-link > #cart-header-logo {
         width: 42px;
         height: 42px;
-        background-color: #585858;
+        background-color: #2980B9;
         float: right;
         background-image: url(../Content/Images/cart_white.png);
         background-repeat: no-repeat;
@@ -351,10 +351,10 @@ nav.series-vertical {
 
     #product-details-price > div {
         float: left;
-        width: 332px;
+        width: 405px;
         height: 67px;
         text-align: center;
-        background-color: #585858;
+        background-color: #2980B9;
         color: white;
         font-size: 56px;
         line-height: 56px;
@@ -371,7 +371,7 @@ nav.series-vertical {
         float: left;
         width: 73px;
         height: 67px;
-        background-color: #39312E;
+        background-color: #2471A3;
         background-image: url(../Content/Images/cart-details.png);
         background-repeat: no-repeat;
         background-position: center center;
@@ -380,7 +380,7 @@ nav.series-vertical {
 #product-details-description {
     font-size: 18px;
     line-height: 22px;
-    color: #39312E;
+    color: #2471A3;
     margin-top: 40px;
     margin-bottom: 40px;
     text-align: justify;
@@ -389,7 +389,7 @@ nav.series-vertical {
 #product-details-info {
     font-size: 18px;
     line-height: 22px;
-    color: #39312E;
+    color: #2471A3;
     margin-top: 40px;
     text-align: justify;
     border-top: 1px solid #E5E5E5;
@@ -1016,7 +1016,7 @@ div.upload {
     #login-header div {
         line-height: 40px;
         padding-right: 15px;
-        color: #39312e;
+        color: #2471A3;
         font-size: 10pt;
         float: right;
     }
@@ -1131,7 +1131,7 @@ div.upload {
 footer {
     width: 100%;
     height: 42px;
-    background-color: #585858;
+    background-color: #2980B9;
     margin-top: 75px;
     /*overflow: hidden;*/
 }
@@ -1176,7 +1176,7 @@ footer {
     footer #footer-copyright {
         width: 215px;
         float: right;
-        background-color: #39312E;
+        background-color: #2471A3;
         line-height: 42px;
         height: 100%;
         font-size: 14px;

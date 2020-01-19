@@ -274,7 +274,7 @@ namespace JCPCars.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Nie wskazano pliku.");
+                    ModelState.AddModelError("", "Sprawdź poprawność formularza.");
                     var series = db.Series.ToArray();
                     model.Series = series;
                     return View(model);

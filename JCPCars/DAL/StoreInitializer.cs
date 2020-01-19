@@ -41,12 +41,12 @@ namespace JCPCars.DAL
 
             var cars = new List<Car>
             {
-                new Car() { CarId = 1, CarModel = "Golf GTI", CarBrand = "Volkswagen", Description = "Opis", Price = 100, PictureFileName = "1.png", DateAdded = new DateTime(2019, 12, 1), SerieId = 1 },
+                new Car() { CarId = 1, CarModel = "Golf R", CarBrand = "Volkswagen", Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dui felis, egestas sit amet sem eget, ullamcorper pulvinar velit. In vel facilisis nisi, pharetra dictum dui.", Price = 100, PictureFileName = "1.png", DateAdded = new DateTime(2019, 12, 1), SerieId = 1 },
                 new Car() { CarId = 2, CarModel = "RS3", CarBrand = "Audi", Description = "Opis", Price = 100, PictureFileName = "2.png", DateAdded = new DateTime(2019, 12, 1), SerieId = 1 },
-                new Car() { CarId = 3, CarModel = "911", CarBrand = "Porsche", Description = "Opis", Price = 100, PictureFileName = "3.png", DateAdded = new DateTime(2019, 12, 1), SerieId = 4 },
-                new Car() { CarId = 4, CarModel = "RS6", CarBrand = "Audi", Description = "Opis", Price = 100, PictureFileName = "4.png", DateAdded = new DateTime(2019, 12, 1), SerieId = 3 },
-                new Car() { CarId = 5, CarModel = "Aventador", CarBrand = "Lamborghini", Description = "Opis", Price = 100, PictureFileName = "5.png", DateAdded = new DateTime(2019, 12, 1), SerieId = 5 },
-                new Car() { CarId = 6, CarModel = "M5", CarBrand = "BMW", Description = "Opis", Price = 100, PictureFileName = "6.png", DateAdded = new DateTime(2019, 12, 1), SerieId = 2 },
+                new Car() { CarId = 3, CarModel = "911", CarBrand = "Porsche", Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dui felis, egestas sit amet sem eget, ullamcorper pulvinar velit. In vel facilisis nisi, pharetra dictum dui.", Price = 100, PictureFileName = "3.png", DateAdded = new DateTime(2019, 12, 1), SerieId = 4 },
+                new Car() { CarId = 4, CarModel = "RS6", CarBrand = "Audi", Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dui felis, egestas sit amet sem eget, ullamcorper pulvinar velit. In vel facilisis nisi, pharetra dictum dui.", Price = 500, PictureFileName = "4.png", DateAdded = new DateTime(2019, 12, 1), SerieId = 3 },
+                new Car() { CarId = 5, CarModel = "Aventador", CarBrand = "Lamborghini", Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dui felis, egestas sit amet sem eget, ullamcorper pulvinar velit. In vel facilisis nisi, pharetra dictum dui.", Price = 260, PictureFileName = "5.png", DateAdded = new DateTime(2019, 12, 1), SerieId = 5 },
+                new Car() { CarId = 6, CarModel = "M5", CarBrand = "BMW", Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dui felis, egestas sit amet sem eget, ullamcorper pulvinar velit. In vel facilisis nisi, pharetra dictum dui.", Price = 999, PictureFileName = "6.png", DateAdded = new DateTime(2019, 12, 1), SerieId = 2 },
             };
 
             cars.ForEach(g => context.Cars.AddOrUpdate(g));
@@ -61,7 +61,7 @@ namespace JCPCars.DAL
 
             //var userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             //var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
-            const string name = "jcp@jcp.com";
+            const string name = "admin@jcpcars.com";
             const string password = "Admin123$";
             const string roleName = "Admin";
 

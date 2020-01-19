@@ -20,6 +20,7 @@
         </div>
     }
 
+
     @using (@Html.BeginForm("AddProduct", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
@@ -57,7 +58,7 @@
                 <tr>
                     <td>@Html.LabelFor(o => o.Car.Price, "Cena:")</td>
                     <td>@Html.TextBoxFor(o => o.Car.Price)</td>
-                    <td>@Html.ValidationMessageFor(o => o.Car.Price)</td>
+                    @*<td>@Html.ValidationMessageFor(o => o.Car.Price)</td>*@
                 </tr>
 
                 @if (ViewBag.EditMode == null || !ViewBag.EditMode)
@@ -75,9 +76,8 @@
 
                 <tr>
                     <td style="text-align: left">
-                        @if (ViewBag.EditMode)
+                        @if (ViewBag.EditMode == true)
                         {
-                            @* A bit dangerous - CSRF. Nested form.. Need to use form attr or JS *@
                             <a href="@Url.Action("Delete", "Manage", new { carId = Model.Car.CarId })" style="display: block; margin-top: 15px; font-weight: bold;">
                                 Usuń
                             </a>
