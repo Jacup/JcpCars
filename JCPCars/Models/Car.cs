@@ -13,10 +13,9 @@ namespace JCPCars.Models
         public int SerieId { get; set; }
 
         [Display(Name = "Model")]
-        [Required]
+        [Required(ErrorMessage = "Wprowadź model pojazdu")]
         public string CarModel { get; set; }
 
-        //[IsCarBrand]
         [Display(Name = "Marka")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Wprowadź markę pojazdu")]
@@ -30,10 +29,6 @@ namespace JCPCars.Models
 
         [Price(50)]
         public int Price { get; set; }
-
-        //[IsValidPhoneNumber]
-        [Display(Name = "Telefon do właściciela")]
-        public int Phone { get; set; }
 
         public virtual Serie Serie { get; set; }
     }

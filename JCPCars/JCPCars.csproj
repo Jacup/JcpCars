@@ -217,6 +217,10 @@
     <Compile Include="Migrations\202001191207495_v2.designer.cs">
       <DependentUpon>202001191207495_v2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001191404475_v3.cs" />
+    <Compile Include="Migrations\202001191404475_v3.designer.cs">
+      <DependentUpon>202001191404475_v3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -365,6 +369,7 @@
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\PublishProfiles\JCPCars20200119023439 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -420,7 +425,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
@@ -442,6 +446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001191207495_v2.resx">
       <DependentUpon>202001191207495_v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001191404475_v3.resx">
+      <DependentUpon>202001191404475_v3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

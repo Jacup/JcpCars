@@ -7,7 +7,6 @@ namespace JCPCars.Models
 {
     public class Serie
     {
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
 
         public int SerieId { get; set; }
         public string Name { get; set; }
