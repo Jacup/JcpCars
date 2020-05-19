@@ -7,10 +7,10 @@
         {
             @Html.AntiForgeryToken()
 
-    <div>
-        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            <div>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
 
-    </div>
+            </div>
             <div>
                 <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
             </div>
@@ -19,10 +19,10 @@
     else
     {
         <div>
-            @Html.ActionLink("Rejestracja", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+            @Html.ActionLink("Rejestracja", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" , @class = "mdl-menu__item"})
         </div>
         <div>
-            @Html.ActionLink("Zaloguj", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+            @Html.ActionLink("Zaloguj", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "mdl-menu__item"})
         </div>
     }
 </div>

@@ -1,0 +1,36 @@
+﻿@model JCPCars.ViewModels.HomeViewModel
+@using JCPCars.Infrastructure
+@{
+    ViewBag.Title = "JcpCars";
+}
+
+<nav class="series-horizontal">
+    <ul>
+        @foreach (var serie in Model.Series)
+        {
+            <li>
+                <a href="@Url.Action("List", "Store", new { seriename = serie.Name.ToLower() })">
+                    @serie.Name
+                </a>
+            </li>
+        }
+    </ul>
+</nav>
+
+<section>
+    <ul class="ThreeColumnsCarsList large-cover-list">
+        @foreach (var newArrival in Model.NewArrivals)
+        {
+            <li>
+                <article>
+                    <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = newArrival.CarId })">
+                        <img class="car-image" src="@Url.CarIconPath(newArrival.PictureFileName)" />
+                        <h1>
+                            @newArrival.CarBrand @newArrival.CarModel
+                        </h1>
+                    </a>
+                </article>
+            </li>
+        }
+    </ul>
+</section>
