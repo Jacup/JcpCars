@@ -2,63 +2,74 @@
 
 @{
     ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_RightSectionLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
-
-    @using (@Html.BeginForm("Register", "Account"))
-    {
-        @Html.AntiForgeryToken()
-
-        <div id="login-error">
-            @Html.ValidationMessage("loginerror", "")
-            @Html.ValidationSummary()
-        </div>
-
-        <table id="login-table" style="margin-left: auto; margin-right: auto;">
-            <tr>
-                <td>@Html.LabelFor(o => o.Email, "E-mail:")</td>
-                <td>
-                    @Html.TextBoxFor(o => o.Email)
-                    <div class="login-validation-message">
-                        @Html.ValidationMessageFor(o => o.Email)
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(o => o.Password, "Hasło:")</td>
-                <td>
-                    @Html.PasswordFor(o => o.Password)
-                    <div class="login-validation-message">
-                        @Html.ValidationMessageFor(o => o.Password)
-                    </div>
-                </td>
-                <td></td>
-            </tr>
-            <tr>
-                <td style="padding: 0px 20px 0px 0px; text-align: left;">
-                    @Html.LabelFor(o => o.ConfirmPassword, "Potwierdź hasło:")
-                </td>
-                <td style="padding: 0px; text-align: left;">
-                    @Html.PasswordFor(o => o.ConfirmPassword)
-                    <div class="login-validation-message">
-                        @Html.ValidationMessageFor(o => o.ConfirmPassword)
-                    </div>
-                </td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td colspan="2" style="text-align: right; padding-right: 20px;">
-                    <input type="submit" value="Zarejestruj" class="submitLink" style="height: 40px; text-align: right; margin: 0px; padding: 0px;" />
-                </td>
-            </tr>
-        </table>
-
+<style>
+    .demo-card-wide.mdl-card {
+        width: 512px;
     }
 
+
+    .demo-card-wide > .mdl-card__menu {
+        color: #fff;
+    }
+</style>
+
+
+
+
+<div class="android-customized-section" style="padding-bottom:100px">
+    <div class="android-customized-section-text">
+        <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast" style="padding-bottom:50px">Stwórz nowe konto</div>
+
+
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+
+            @using (@Html.BeginForm("Register", "Account"))
+            {
+                @Html.AntiForgeryToken()
+
+                <div id="login-error">
+                    @Html.ValidationMessage("loginerror", "")
+                    @Html.ValidationSummary()
+                </div>
+
+
+                <div class="mdl-card__supporting-text">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        @Html.TextBoxFor(o => o.Email, new { @class = "mdl-textfield__input" })
+                        <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.Email, "E-mail:")</label>
+                        @Html.ValidationMessageFor(o => o.Email)
+
+                    </div>
+
+
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        @Html.PasswordFor(o => o.Password, new { @class = "mdl-textfield__input" })
+                        <label class="mdl-textfield__label" for="Password">@Html.LabelFor(o => o.Password, "Hasło")</label>
+                        @Html.ValidationMessageFor(o => o.Password)
+                    </div>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        @Html.PasswordFor(o => o.ConfirmPassword, new { @class = "mdl-textfield__input" })
+                        <label class="mdl-textfield__label" for="Password">@Html.LabelFor(o => o.ConfirmPassword, "Potwierdź hasło:")</label>
+                        @Html.ValidationMessageFor(o => o.ConfirmPassword)
+                    </div>
+
+
+                </div>
+                <div class="mdl-card__actions" style="padding-bottom:20px">
+                    <input type="submit" value="Zarejestruj się" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" />
+                </div>
+
+
+            }
+        </div>
+    </div>
 </div>
+
 
 
 @section ScriptsBottom
