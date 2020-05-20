@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCPCars", "JCPCars\JCPCars.csproj", "{C2EF41E2-1F12-46C4-8B38-4EDCA29E43EA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0F5EA788-30E1-4964-964A-B8966D82C86F}"
+	ProjectSection(SolutionItems) = preProject
+		.a11yrc = .a11yrc
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

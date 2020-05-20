@@ -244,11 +244,13 @@
     <Content Include="Content\Images\bestseller.png" />
     <Content Include="Content\Images\cart-details.png" />
     <Content Include="Content\Images\devices.jpg" />
+    <Content Include="Content\Images\facebook.png" />
     <Content Include="Content\Images\fb-login.png" />
     <Content Include="Content\Images\fb-share.png" />
     <Content Include="Content\Images\fb_white.png" />
     <Content Include="Content\Images\footer-cd.bak.png" />
     <Content Include="Content\Images\google-login.png" />
+    <Content Include="Content\Images\google.png" />
     <Content Include="Content\Images\home-small.png" />
     <Content Include="Content\Images\icons-18-black.png" />
     <Content Include="Content\Images\icons-18-white.png" />
@@ -270,6 +272,7 @@
     <Content Include="Content\Images\wear-silver-on.png" />
     <Content Include="Content\Images\wear.png" />
     <Content Include="Content\index.html" />
+    <Content Include="Content\indexlogin.html" />
     <Content Include="Content\jquery.mobile-1.1.0.css" />
     <Content Include="Content\jquery.mobile-1.1.0.min.css" />
     <Content Include="Content\jquery.mobile.structure-1.1.0.css" />
@@ -436,6 +439,8 @@
     <Content Include="Views\Manage\Delete.cshtml" />
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
     <Content Include="Views\Home\Index - Copy.cshtml" />
+    <Content Include="Views\Account\Login - Copy.cshtml" />
+    <Content Include="Views\Account\Register - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
