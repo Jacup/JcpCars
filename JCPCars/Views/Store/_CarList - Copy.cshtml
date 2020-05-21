@@ -1,0 +1,22 @@
+﻿@model IEnumerable<JCPCars.Models.Car>
+@using JCPCars.Infrastructure
+
+
+
+<div id="productlist-section">
+    <ul class="ThreeColumnsCarsList small-cover-list">
+        @foreach (var car in Model)
+        {
+            <li>
+                <article>
+                    <a class="productdetailslink" href="@Url.Action("Details", "Store", new { id = car.CarId })" >
+                        <img class="car-image" src="@Url.CarIconPath(car.PictureFileName)" />
+                        <h1>
+                            @car.CarBrand @car.CarModel
+                        </h1>
+                    </a>
+                </article>
+            </li>
+        }
+    </ul>
+</div>

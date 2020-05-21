@@ -1,4 +1,4 @@
-/**
+﻿/**
  * material-design-lite - Material Design Components in CSS, JS and HTML
  * @version v1.3.0
  * @license Apache-2.0
@@ -4265,11 +4265,11 @@ input.mdl-button[type="submit"] {
 
 .mdl-card__subtitle-text {
   font-size: 14px;
-  color: rgba(0,0,0, 0.54);
+  color: #000;
   margin: 0; }
 
 .mdl-card__supporting-text {
-  color: rgba(0,0,0, 0.54);
+  color: #000;
   font-size: 1rem;
   line-height: 18px;
   overflow: hidden;

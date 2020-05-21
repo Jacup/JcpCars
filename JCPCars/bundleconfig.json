@@ -4,5 +4,11 @@
     "inputFiles": [
       "Prototype/Main.html"
     ]
+  },
+  {
+    "outputFileName": "Content/material.min.css",
+    "inputFiles": [
+      "Content/material.css"
+    ]
   }
 ]

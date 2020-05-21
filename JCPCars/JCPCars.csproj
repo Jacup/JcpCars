@@ -334,6 +334,12 @@
     <Content Include="Content\js\modules\waves.js" />
     <Content Include="Content\js\modules\wow.js" />
     <Content Include="Content\js\popper.min.js" />
+    <Content Include="Content\material.css" />
+    <Content Include="Content\material.js" />
+    <Content Include="Content\material.min.css">
+      <DependentUpon>material.css</DependentUpon>
+    </Content>
+    <Content Include="Content\material.min.js" />
     <Content Include="Content\product-page.html" />
     <Content Include="Content\Site - Copy.css" />
     <Content Include="Content\Site-prototype.css" />
@@ -502,6 +508,9 @@
     <Content Include="Content\scss\_custom-skin.scss" />
     <Content Include="Content\scss\_custom-styles.scss" />
     <Content Include="Content\scss\_custom-variables.scss" />
+    <Content Include="Content\material.min.css.map" />
+    <Content Include="Content\material.min.js.map" />
+    <Content Include="Content\package.json" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -564,6 +573,9 @@
     <Content Include="Views\Account\Register - Copy.cshtml" />
     <Content Include="Views\Store\Details - Copy.cshtml" />
     <Content Include="Views\Home\About - Copy.cshtml" />
+    <Content Include="Views\Store\_CarList - Copy.cshtml" />
+    <Content Include="Views\Store\List - Copy.cshtml" />
+    <Content Include="Views\Store\_SeriesMenu - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
