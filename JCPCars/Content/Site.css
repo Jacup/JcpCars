@@ -24,12 +24,12 @@ a img {
 }
 
 ::-moz-selection {
-    background-color: #6ab344;
+    background-color: #37474f;
     color: #fff;
 }
 
 ::selection {
-    background-color: #6ab344;
+    background-color: #37474f;
     color: #fff;
 }
 
@@ -121,7 +121,7 @@ a img {
 }
 
     .android-navigation .mdl-navigation__link:hover {
-        border-bottom: 4px solid #8bc34a;
+        border-bottom: 4px solid #00bfa5;
     }
 
 .android-search-box {
@@ -155,12 +155,12 @@ a img {
 }
 
 .android-drawer span.mdl-navigation__link.mdl-navigation__link {
-    color: #8bc34a;
+    color: #00bfa5;
 }
 
 .android-drawer .mdl-layout-title {
     position: relative;
-    background: #6ab344;
+    background: #37474f;
     height: 160px;
 }
 
@@ -171,11 +171,9 @@ a img {
 
 .android-be-together-section {
     position: relative;
-    height: 800px;
+    height: 500px;
     width: auto;
     background-color: #f3f3f3;
-    background: url('images/slide01.jpg') center 30% no-repeat;
-    background-size: cover;
 }
 
 .logo-font {
@@ -197,7 +195,7 @@ a img {
 
 .android-create-character {
     font-size: 21px;
-    padding-top: 400px;
+    padding-top: 100px;
 }
 
     .android-create-character a {
@@ -303,9 +301,8 @@ a img {
 
 .android-wear-section {
     position: relative;
-    background: url('images/wear.png') center top no-repeat;
     background-size: cover;
-    height: 800px;
+    height: 200px;
 }
 
 .android-wear-band {
@@ -330,7 +327,7 @@ a img {
 
 .android-link {
     text-decoration: none;
-    color: #8bc34a !important;
+    color: #00bfa5 !important;
 }
 
     .android-link:hover {
@@ -435,7 +432,7 @@ a img {
 }
 
     .android-footer a:hover {
-        color: #8bc34a;
+        color: #00bfa5;
     }
 
     .android-footer .mdl-mega-footer--top-section::after {
@@ -492,7 +489,6 @@ a img {
     }
 
     .android-more-button {
-        display: none;
     }
 
     .android-search-box.is-focused {

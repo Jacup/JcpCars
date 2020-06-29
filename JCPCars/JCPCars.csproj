@@ -292,6 +292,7 @@
     <Content Include="Content\Images\sedan-car-model.png" />
     <Content Include="Content\Images\slide01.jpg" />
     <Content Include="Content\Images\tv-on.jpg" />
+    <Content Include="Content\Images\twitter.png" />
     <Content Include="Content\Images\upload.png" />
     <Content Include="Content\Images\wear-black-on.png" />
     <Content Include="Content\Images\wear-silver-on.png" />
@@ -568,14 +569,14 @@
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Delete.cshtml" />
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
-    <Content Include="Views\Home\Index - Copy.cshtml" />
     <Content Include="Views\Account\Login - Copy.cshtml" />
     <Content Include="Views\Account\Register - Copy.cshtml" />
     <Content Include="Views\Store\Details - Copy.cshtml" />
-    <Content Include="Views\Home\About - Copy.cshtml" />
     <Content Include="Views\Store\_CarList - Copy.cshtml" />
     <Content Include="Views\Store\List - Copy.cshtml" />
     <Content Include="Views\Store\_SeriesMenu - Copy.cshtml" />
+    <Content Include="Views\Store\_SeriesMenu2.cshtml" />
+    <Content Include="Views\Manage\AddProduct.bak.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

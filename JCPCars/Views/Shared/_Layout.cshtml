@@ -46,7 +46,7 @@
         <div class="android-header mdl-layout__header mdl-layout__header--waterfall">
             <div class="mdl-layout__header-row">
                 <span class="android-title mdl-layout-title">
-                    <img class="android-logo-image" src="../Content/Images/jcpcars-logo-main.png" href="@Url.Content("~/")">
+                    <img class="android-logo-image" src="../Content/Images/autoshare.png" href="@Url.Content("~/")">
                 </span>
                 <!-- Add spacer, to align navigation to the right in desktop -->
                 <div class="android-header-spacer mdl-layout-spacer"></div>
@@ -62,43 +62,46 @@
                 <div class="android-navigation-container">
                     <nav class="android-navigation mdl-navigation">
                         <a class="mdl-navigation__link mdl-typography--text-uppercase" href="@Url.Content("~/")">Strona główna</a>
-                        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="">Tablets</a>
+                        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="@Url.Content("~/Manage/AddProduct")">Dodaj ogłoszenie</a>
 
                     </nav>
                 </div>
                 <span class="android-mobile-title mdl-layout-title">
-                    <img class="android-logo-image" src="../Content/Images/jcpcars-logo-main.png" href="@Url.Content("~/")">
+                    <img class="android-logo-image" src="../Content/Images/autoshare.png" href="@Url.Content("~/")">
                 </span>
                 <button class="android-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
                     <i class="material-icons">more_vert</i>
                 </button>
                 <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
                     @Html.Partial("_LoginPartial")
-                    <li disabled class="mdl-menu__item">ADMIN</li>
                 </ul>
             </div>
         </div>
 
         <div class="android-drawer mdl-layout__drawer">
             <span class="mdl-layout-title">
-                <img class="android-logo-image" src="images/android-logo-white.png">
+                <img class="android-logo-image" src="../Content/Images/autoshare.png">
             </span>
             <nav class="mdl-navigation">
                 <span class="mdl-navigation__link" href="">KATEGORIE</span>
+                @Html.Action("SeriesMenu2", "Store")
 
-                @*@foreach (var serie in Model.Series)
-                    {
-                        <a class="mdl-navigation__link" href="@Url.Action("List", "Store", new { seriename = serie.Name.ToLower() })">@serie.Name</a>
-
-                    }*@
 
                 <div class="android-drawer-separator"></div>
                 <span class="mdl-navigation__link" href="">MOJE KONTO</span>
+                @if (Request.IsAuthenticated)
+                {
 
-                <a class="mdl-navigation__link" href="">Official blog</a>
-                <a class="mdl-navigation__link" href="">Android on Google+</a>
-                <a class="mdl-navigation__link" href="">Android on Twitter</a>
+                    <a class="mdl-navigation__link" href="">Moje ogłoszenia</a>
+                    <a class="mdl-navigation__link" href="@Url.Content("~/Manage/AddProduct")">Dodaj nowe ogłoszenie</a>
+                }
+                else
+                {
+                    <a class="mdl-navigation__link" href="@Url.Content("~/Account/Register")">Zarejestruj się</a>
+                    <a class="mdl-navigation__link" href="@Url.Content("~/Account/Login")">Zaloguj się</a>
 
+
+                }
             </nav>
         </div>
 
@@ -116,17 +119,9 @@
             <footer class="android-footer mdl-mega-footer">
                 <div class="mdl-mega-footer--top-section">
                     <div class="mdl-mega-footer--left-section">
-                        <button class="mdl-mega-footer--social-btn"></button>
-                        &nbsp;
-                        <button class="mdl-mega-footer--social-btn"></button>
-                        &nbsp;
-                        <button class="mdl-mega-footer--social-btn"></button>
-                    </div>
-                    <div class="mdl-mega-footer--right-section">
-                        <a class="mdl-typography--font-light" href="#top">
-                            Back to Top
-                            <i class="material-icons">expand_less</i>
-                        </a>
+                        <img style="padding-right:10px;" src="../Content/Images/facebook.png" href="@Url.Content("~/")">
+                        <img style="padding-right:10px;"src="../Content/Images/google.png" href="@Url.Content("~/")">
+                        <img style="padding-right:10px;"src="../Content/Images/twitter.png" href="@Url.Content("~/")">
                     </div>
                 </div>
 
@@ -167,7 +162,6 @@
 
         </div>
     </div>
-    <a href="https://github.com/google/material-design-lite/blob/mdl-1.x/templates/android-dot-com/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View Source</a>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     @RenderSection("ScriptsBottom", required: false)
 </body>

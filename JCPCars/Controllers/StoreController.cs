@@ -36,5 +36,12 @@ namespace JCPCars.Controllers
 
             return PartialView("_SeriesMenu", series);
         }
+        [ChildActionOnly]
+        public ActionResult SeriesMenu2()
+        {
+            var series = db.Series.ToList();
+
+            return PartialView("_SeriesMenu2", series);
+        }
     }
 }

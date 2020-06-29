@@ -1,0 +1,9 @@
+﻿@model IEnumerable<JCPCars.Models.Serie>
+@using JCPCars.Infrastructure
+
+@foreach (var serie in Model)
+{
+    <a class="mdl-navigation__link" href="@Url.Action("List", "Store", new { seriename = serie.Name.ToString() }) ">@serie.Name</a>
+
+
+}
