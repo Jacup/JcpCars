@@ -1,28 +1,25 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace JCPCars.Models
 {
-    public class IndexViewModel
+    public class ManageCredentialsViewModel
     {
         public bool HasPassword { get; set; }
-        public IList<UserLoginInfo> Logins { get; set; }
-        public string PhoneNumber { get; set; }
-        public bool TwoFactor { get; set; }
-        public bool BrowserRemembered { get; set; }
-    }
-
-    public class ManageLoginsViewModel
-    {
+        public SetPasswordViewModel SetPasswordViewModel { get; set; }
+        public ChangePasswordViewModel ChangePasswordViewModel { get; set; }
+        public JCPCars.Controllers.ManageController.ManageMessageId? Message { get; set; }
         public IList<UserLoginInfo> CurrentLogins { get; set; }
         public IList<AuthenticationDescription> OtherLogins { get; set; }
-    }
+        public bool ShowRemoveButton { get; set; }
 
-    public class FactorViewModel
-    {
-        public string Purpose { get; set; }
+        public UserData UserData { get; set; }
     }
 
     public class SetPasswordViewModel

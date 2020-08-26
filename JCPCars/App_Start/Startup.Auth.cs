@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Facebook;
+using Microsoft.Owin.Security.Google;
 using Owin;
 using System;
 using System.Collections.Generic;
@@ -43,18 +44,18 @@ namespace JCPCars
             var options = new FacebookAuthenticationOptions()
             {
                 AppId = "519892078638826",
-                AppSecret = "5a5a7a991095964386a6e2a1d4596cc4"
+                AppSecret = "8716fabff129666f0b5bf9745138f529"
             };
             options.Scope.Add("email");
 
             app.UseFacebookAuthentication(options);
 
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "244942366744-430efh0d09kkl146sa5lg9jk7ruh6ajt.apps.googleusercontent.com",
+                ClientSecret = "N5BedCsHKOn8N97tNQTP8He9"
+            });
         }
     }
 }

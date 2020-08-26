@@ -15,7 +15,7 @@ namespace JCPCars.Models
     {
         //public virtual ICollection<Order> Orders { get; set; }        TO CLEAN
 
-        //public UserData UserData { get; set; }
+        public UserData UserData { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

@@ -1,33 +1,597 @@
-﻿@model JCPCars.Models.IndexViewModel
+﻿@model JCPCars.Models.ManageCredentialsViewModel
 @{
     ViewBag.Title = "Moje konto";
-    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-<center><h1>@ViewBag.Title</h1></center>
+    <body>
+        <!-- Main Container -->
+        <div class="container mt-5 pt-3">
 
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <center>
-            [
-            @Html.ActionLink("Zmień hasło", "ChangePassword")
+            <!--Navbar-->
+            <nav class="navbar navbar-expand-lg navbar-dark primary-color mt-5 mb-5">
+
+                <!-- Navbar brand -->
+                <a class="font-weight-bold white-text mr-4" href="#">Kategorie</a>
+
+                <!-- Collapse button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
 
-            ]
-        </center>
-        <br />
-        <center>
-            [
-            Usuń konto
-            ]
-        </center>
-    </dl>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+
+                    <!-- Links -->
+                    <ul class="navbar-nav mr-auto">
+
+                        KATEGORIE
+
+                    </ul>
+                </div>
+
+
+            </nav>
+            <!--/.Navbar-->
+
+
+            <div class="row pt-4">
+
+
+
+                <!-- Sidebar -->
+                <div class="col-lg-3">
+
+                    <div class="">
+                        <!-- Grid row -->
+                        <div class="row">
+                            <div class="col-md-6 col-lg-12 mb-5">
+                                <!-- Panel -->
+                                <h5 class="font-weight-bold dark-grey-text">
+                                    <strong>Sortuj według</strong></h3>
+                                    <div class="divider"></div>
+
+                                    <p class="blue-text"><a>Domyślnie</a></p>
+                                    <p class="dark-grey-text"><a>Moc</a></p>
+                                    <p class="dark-grey-text"><a>Rok produkcji</a></p>
+                                    <p class="dark-grey-text"><a>Cena malejąco</a></p>
+                                    <p class="dark-grey-text"><a>Cena rosnąco</a></p>
+                            </div>
+
+                        </div>
+                        <!-- /Grid row -->
+                    </div>
+
+                </div>
+                <!-- /.Sidebar -->
+                <!-- Content -->
+
+
+
+                <div class="col-lg-9">
+                    <section class="section pt-4">
+                        <div class="row">
+
+
+                            <style>
+                                .demo-card-wide.mdl-card {
+                                    width: 100%;
+                                    margin-bottom:50px;
+                                }
+
+                                .demo-card-wide > .mdl-card__title {
+                                    color: #000;
+                                    background: url('../assets/demos/welcome_card.jpg') center / cover;
+                                }
+
+                                .demo-card-wide > .mdl-card__menu {
+                                    color: #fff;
+                                }
+                                .mdl-card__actions {
+                                    text-align:center;
+                                }
+                            </style>
+
+
+                            @using (@Html.BeginForm("ChangeProfile", "Manage"))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                                    <div class="mdl-card__title">
+                                        <h2 class="mdl-card__title-text">Zmiana danych</h2>
+                                    </div>
+                                    <div class="mdl-card__supporting-text">
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            @Html.TextBoxFor(o => o.UserData.FirstName, new { @class = "mdl-textfield__input" })
+                                            <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.UserData.FirstName, "Imię:")</label>
+                                            @Html.ValidationMessageFor(o => o.UserData.FirstName)
+                                        </div>
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            @Html.TextBoxFor(o => o.UserData.LastName, new { @class = "mdl-textfield__input" })
+                                            <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.UserData.LastName, "Nazwisko:")</label>
+                                            @Html.ValidationMessageFor(o => o.UserData.LastName)
+                                        </div>
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            @Html.TextBoxFor(o => o.UserData.Address, new { @class = "mdl-textfield__input" })
+                                            <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.UserData.Address, "Ulica, numer domu/mieszkania:")</label>
+                                            @Html.ValidationMessageFor(o => o.UserData.Address)
+                                        </div>
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            @Html.TextBoxFor(o => o.UserData.AddressCity, new { @class = "mdl-textfield__input" })
+                                            <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.UserData.AddressCity, "Miasto:")</label>
+                                            @Html.ValidationMessageFor(o => o.UserData.AddressCity)
+                                        </div>
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            @Html.TextBoxFor(o => o.UserData.CityCode, new { @class = "mdl-textfield__input" })
+                                            <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.UserData.CityCode, "Kod pocztowy:")</label>
+                                            @Html.ValidationMessageFor(o => o.UserData.CityCode)
+                                        </div>
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            @Html.TextBoxFor(o => o.UserData.PhoneNumber, new { @class = "mdl-textfield__input" })
+                                            <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.UserData.PhoneNumber, "Numer telefonu:")</label>
+                                            @Html.ValidationMessageFor(o => o.UserData.PhoneNumber)
+                                        </div>
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            @Html.TextBoxFor(o => o.UserData.Email, new { @class = "mdl-textfield__input" })
+                                            <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.UserData.Email, "Adres e-mail:")</label>
+                                            @Html.ValidationMessageFor(o => o.UserData.Email)
+                                        </div>
+
+
+                                    </div>
+                                    <div class="mdl-card__actions mdl-card--border">
+                                        @*<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit">
+                                            Potwierdź
+                                        </a>*@
+                                        <input type="submit" value="Zapisz zmiany" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" />
+                                    </div>
+                                </div>
+                            }
+
+
+                            
+
+                        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+
+                            @if (Model.HasPassword)
+                            {
+                                using (Html.BeginForm("ChangePassword", "Manage", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+
+
+
+
+
+
+                                    <div class="mdl-card__title">
+                                        <h2 class="mdl-card__title-text">Zmiana hasła</h2>
+                                    </div>
+
+
+                                    <div class="mdl-card__supporting-text" style="text-align:center">
+
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            @Html.TextBoxFor(o => o.ChangePasswordViewModel.OldPassword, new { @class = "mdl-textfield__input" })
+                                            <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.ChangePasswordViewModel.OldPassword, "Stare hasło:")</label>
+                                            @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.OldPassword)
+                                        </div>
+                                        <br />
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            @Html.TextBoxFor(o => o.ChangePasswordViewModel.NewPassword, new { @class = "mdl-textfield__input" })
+                                            <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.ChangePasswordViewModel.NewPassword, "Nowe hasło:")</label>
+                                            @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.NewPassword)
+                                        </div>
+                                        <br />
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            @Html.TextBoxFor(o => o.ChangePasswordViewModel.ConfirmPassword, new { @class = "mdl-textfield__input" })
+                                            <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.ChangePasswordViewModel.ConfirmPassword, "Potwierdź hasło:")</label>
+                                            @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.ConfirmPassword)
+                                        </div>
+                                    </div>
+
+                                    if (Model.Message.HasValue)
+                                    {
+                                        <div class="mdl-card__supporting-text">
+                                            <center>
+                                                @switch (Model.Message)
+                                                {
+                                                    case JCPCars.Controllers.ManageController.ManageMessageId.ChangePasswordSuccess:
+                                                        @: Hasło zmienione pomyślnie!
+                                                        break;
+                                                    case JCPCars.Controllers.ManageController.ManageMessageId.SetPasswordSuccess:
+                                                        @: Hasło dodane pomyślnie!
+                                                        break;
+                                                    case JCPCars.Controllers.ManageController.ManageMessageId.Error:
+                                                        @: Wystąpił błąd
+                                                        break;
+                                                }
+                                            </center>
+                                        </div>
+                                    }
+                                    <div class="mdl-card__actions mdl-card--border">
+                                        <input type="submit" value="Zmień" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" />
+
+
+                                    </div>
+
+                                }
+                            }
+                        </div>
+
+
+
+
+
+
+                        </div>
+
+                    </section>
+                    <!-- /.Products Grid -->
+
+                </div>
+                <!-- /.Content -->
+
+            </div>
+
+        </div>
+        <!-- /.Main Container -->
+        <!-- SCRIPTS -->
+        <script>
+            (function () {
+                'use strict';
+                window['counter'] = 0;
+                var snackbarContainer = document.querySelector('#demo-toast-example');
+                var showToastButton = document.querySelector('#demo-show-toast');
+                showToastButton.addEventListener('click', function () {
+                    'use strict';
+                    var data = { message: 'Example Message # ' + ++counter };
+                    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                });
+            }());
+        </script>
+
+        <!-- JQuery -->
+        <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+        <!-- Initializations -->
+        <script type="text/javascript">
+            // Animations initialization
+            new WOW().init();
+
+        </script>
+    </body>
+
+    </html>
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="text-align: center;">
+
 </div>
 
 
+
+<hr />
+
+@*@if (Model.HasPassword)
+    {
+        <h2 style="margin-bottom: 30px">Zmiana hasła</h2>
+
+        using (Html.BeginForm("ChangePassword", "Manage", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="manage-error">
+                @Html.ValidationMessage("password-error", "")
+            </div>
+
+            if (Model.Message.HasValue)
+            {
+                <div class="manage-message">
+                    @switch (Model.Message)
+                    {
+                        case JCPCars.Controllers.ManageController.ManageMessageId.ChangePasswordSuccess:
+                            @: Hasło zmienione pomyślnie!
+                            break;
+                        case JCPCars.Controllers.ManageController.ManageMessageId.SetPasswordSuccess:
+                            @: Hasło dodane pomyślnie!
+                            break;
+                        case JCPCars.Controllers.ManageController.ManageMessageId.Error:
+                            @: Wystąpił błąd
+                            break;
+                    }
+                </div>
+            }
+
+            <table id="password-table" style="margin-left: auto; margin-right: auto;">
+                <tr>
+                    <td>@Html.LabelFor(o => o.ChangePasswordViewModel.OldPassword, "Stare hasło:")</td>
+                    <td>
+                        @Html.PasswordFor(o => o.ChangePasswordViewModel.OldPassword)
+                        <div class="login-validation-message">
+                            @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.OldPassword)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.ChangePasswordViewModel.NewPassword, "Nowe hasło:")</td>
+                    <td>
+                        @Html.PasswordFor(o => o.ChangePasswordViewModel.NewPassword)
+                        <div class="login-validation-message">
+                            @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.NewPassword)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.ChangePasswordViewModel.ConfirmPassword, "Potwierdź hasło:")</td>
+                    <td>
+                        @Html.PasswordFor(o => o.ChangePasswordViewModel.ConfirmPassword)
+                        <div class="login-validation-message">
+                            @Html.ValidationMessageFor(o => o.ChangePasswordViewModel.ConfirmPassword)
+                        </div>
+                    </td>
+                </tr>
+                <tr style="text-align: right;">
+                    <td></td>
+                    <td colspan="3">
+                        <div class="checkbox" style="margin-bottom: 10px;">
+                        </div>
+
+                        <input type="submit" value="Zmień" class="submitLink" style="height: 40px;" />
+                    </td>
+                </tr>
+            </table>
+        }
+    }
+    else
+    {
+        <h2 style="margin-bottom: 30px">Ustaw hasło lokalne</h2>
+
+        using (Html.BeginForm("SetPassword", "Manage", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="manage-error">
+                @Html.ValidationMessage("password-error", "")
+            </div>
+
+            if (Model.Message.HasValue)
+            {
+                <div class="manage-message">
+                    @switch (Model.Message)
+                    {
+                        case JCPCars.Controllers.ManageController.ManageMessageId.SetPasswordSuccess:
+                            @: Hasło dodane pomyślnie!
+                            break;
+                        case JCPCars.Controllers.ManageController.ManageMessageId.Error:
+                            @: Wystąpił błąd
+                            break;
+                    }
+                </div>
+            }
+
+            <table id="password-table" style="margin-left: auto; margin-right: auto;">
+                <tr>
+                    <td>@Html.LabelFor(o => o.SetPasswordViewModel.NewPassword, "Nowe hasło:")</td>
+                    <td>
+                        @Html.PasswordFor(o => o.SetPasswordViewModel.NewPassword)
+                        <div class="login-validation-message">
+                            @Html.ValidationMessageFor(o => o.SetPasswordViewModel.NewPassword)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(o => o.SetPasswordViewModel.ConfirmPassword, "Potwierdź hasło:")</td>
+                    <td>
+                        @Html.PasswordFor(o => o.SetPasswordViewModel.ConfirmPassword)
+                        <div class="login-validation-message">
+                            @Html.ValidationMessageFor(o => o.SetPasswordViewModel.ConfirmPassword)
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div class="checkbox" style="margin-bottom: 10px;">
+                        </div>
+
+                        <input type="submit" value="Zmień" class="submitLink" style=" height: 40px;" />
+                    </td>
+                </tr>
+            </table>
+        }
+    }*@
+
+
+@if (Model.CurrentLogins.Count > 0)
+{
+    <hr />
+
+    <h4 style="margin-bottom: 30px">Połączone konta</h4>
+    <table style="margin-left: auto; margin-right: auto; margin-bottom: 50px">
+        <tbody>
+            @foreach (var account in Model.CurrentLogins)
+            {
+                <tr style="height: 35px;">
+                    <td>@account.LoginProvider</td>
+                    <td>
+                        @if (Model.ShowRemoveButton)
+                        {
+                            using (Html.BeginForm("RemoveLogin", "Manage"))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div>
+                                    @Html.Hidden("loginProvider", account.LoginProvider)
+                                    @Html.Hidden("providerKey", account.ProviderKey)
+                                    &nbsp;
+                                    (<input type="submit" class="submitLink" style="padding: 0px; margin-top: -5px;" value="usuń" title="Remove this @account.LoginProvider login from your account" />)
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            @: &nbsp;
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@if (Model.OtherLogins.Count > 0)
+{
+    <hr />
+
+    <h4>Dodaj logowanie przy pomocy innego serwisu</h4>
+
+    using (Html.BeginForm("LinkLogin", "Manage"))
+    {
+        @Html.AntiForgeryToken()
+        <div id="socialLoginList">
+            <p style="text-align: center;">
+                <br />
+                @foreach (Microsoft.Owin.Security.AuthenticationDescription p in Model.OtherLogins)
+                {
+                    <button type="submit" class="submitLink" style="height: 50px;" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="log in using your @p.Caption account">@string.Format("Dodaj logowanie przy pomocy usługi {0}", @p.AuthenticationType)</button>
+                    <br />
+                }
+            </p>
+        </div>
+    }
+}
+
+
+
+
+
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<!-- Initializations -->
+<script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+
+</script>
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<p class="text-success">@ViewBag.StatusMessage</p>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <center>
+                [
+                @Html.ActionLink("Zmień hasło", "ChangePassword")
+
+
+                ]
+            </center>
+            <br />
+            <center>
+                [
+                Usuń konto
+                ]
+            </center>
+        </dl>
+    </div>
+
+        <div class="android-more-section">
+            <div class="android-section-title mdl-typography--display-1-color-contrast">@ViewBag.Title</div>
+            <div class="android-card-container mdl-grid">
+
+
+                <div class="square-card mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">H5</h2>
+                    </div>
+
+                    <div class="mdl-card__supporting-text">
+                        HTML5 is the next major revision of the HTML standard
+                        superseding HTML 4.01, XHTML 1.0, and XHTML 1.1.
+                        HTML5 is a standard for structuring and presenting
+                        content on the World Wide Web.
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Learn HTML5
+                        </a>
+                    </div>
+
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">share</i>
+                        </button>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+                    <a href="">
+                        <div class="mdl-card__media">
+                            <img src="">
+                        </div>
+                    </a>
+                    <div class="mdl-card__title">
+                        <h4 class="mdl-card__title-text"></h4>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <span class="mdl-typography--font-light mdl-typography--subhead"></span>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>*@
 
 
 

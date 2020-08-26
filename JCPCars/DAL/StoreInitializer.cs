@@ -21,10 +21,11 @@ namespace JCPCars.DAL
     {
         //protected override void Seed(StoreContext context)
         //{
+        //    InitializeIdentityForEF(context);
         //    SeedStoreData(context);
+
         //    base.Seed(context);
         //}
-
         public static void SeedStoreData(StoreContext context) //metoda wypełniająca db przykładowymi danymi
         {
             var series = new List<Serie>
@@ -69,7 +70,7 @@ namespace JCPCars.DAL
             var user = userManager.FindByName(name);
             if (user == null)
             {
-                user = new ApplicationUser { UserName = name, Email = name };
+                user = new ApplicationUser { UserName = name, Email = name, UserData = new UserData() };
                 var result = userManager.Create(user, password);
                 result = userManager.SetLockoutEnabled(user.Id, false);
             }

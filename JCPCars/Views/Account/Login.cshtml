@@ -68,13 +68,23 @@
                 Zaloguj przez:
             </div>
 
+            @using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }))
+            {
+                @Html.AntiForgeryToken()
 
-            <a href="" style="padding:10px">
+                <button type="submit" id="FacebookLoginButton" name="provider" value="Facebook" title="Log in using your Facebook account"></button>
+
+                <button type="submit" id="GoogleLoginButton" name="provider" value="Google" title="Log in using your Google account"></button>
+            }
+
+
+
+            @*<a href="" style="padding:10px">
                 <img class="android-screen-image" src="@Url.Content("~/Content/images/facebook.png")">
             </a>
-            <a href="" style="padding:10px" >
+            <a href="" style="padding:10px">
                 <img class="android-screen-image" src="@Url.Content("~/Content/images/google.png")">
-            </a>
+            </a>*@
 
 
         </div>

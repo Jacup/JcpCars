@@ -23,24 +23,23 @@ namespace JCPCars.DAL
         public virtual DbSet<Car> Cars { get; set; }
         public DbSet<Serie> Series { get; set; }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
-        //    //        modelBuilder.Entity<ApplicationUser>().HasMany(a => a.Orders).WithRequired().WillCascadeOnDelete(true);
-        //    modelBuilder.Entity<Order>().HasRequired(o => o.User);
-
-
-        //    //.HasForeignKey(p => p.DepartmentId)
-        //    //.WillCascadeOnDelete(false);
+            //        modelBuilder.Entity<ApplicationUser>().HasMany(a => a.Orders).WithRequired().WillCascadeOnDelete(true);
 
 
-        //    // Change the name of the table to be Users instead of AspNetUsers
-        //    //modelBuilder.Entity<IdentityUser>()
-        //    //    .ToTable("Users");
-        //    //modelBuilder.Entity<ApplicationUser>()
-        //    //    .ToTable("Users");
-        //}
+            //.HasForeignKey(p => p.DepartmentId)
+            //.WillCascadeOnDelete(false);
+
+
+            // Change the name of the table to be Users instead of AspNetUsers
+            //modelBuilder.Entity<IdentityUser>()
+            //    .ToTable("Users");
+            //modelBuilder.Entity<ApplicationUser>()
+            //    .ToTable("Users");
+        }
 
 
         public static StoreContext Create()
