@@ -263,58 +263,57 @@ namespace JCPCars.Controllers
         }
 
 
-        //public ActionResult OrdersList()
-        //{
-        //    bool isAdmin = User.IsInRole("Admin");
-        //    ViewBag.UserIsAdmin = isAdmin;
+        public ActionResult OrdersList()
+        {
+            bool isAdmin = User.IsInRole("Admin");
+            ViewBag.UserIsAdmin = isAdmin;
 
-        //    IEnumerable<Order> userOrders;
+            IEnumerable<Order> userOrders;
 
-        //    // For admin users - return all orders
-        //    if (isAdmin)
-        //    {
-        //        userOrders = db.Orders.Include("OrderItems").
-        //            OrderByDescending(o => o.DateCreated).ToArray();
-        //    }
-        //    else
-        //    {
-        //        var userId = User.Identity.GetUserId();
-        //        userOrders = db.Orders.Where(o => o.UserId == userId).Include("OrderItems").
-        //            OrderByDescending(o => o.DateCreated).ToArray();
-        //    }
+            // For admin users - return all orders
+            if (isAdmin)
+            {
+                userOrders = db.Orders.Include("OrderItems").
+                    OrderByDescending(o => o.DateCreated).ToArray();
+            }
+            else
+            {
+                var userId = User.Identity.GetUserId();
+                userOrders = db.Orders.Where(o => o.UserId == userId).Include("OrderItems").
+                    OrderByDescending(o => o.DateCreated).ToArray();
+            }
 
-        //    return View(userOrders);
-        //}
+            return View(userOrders);
+        }
 
-        //[HttpPost]
-        //[Authorize(Roles = "Admin")]
-        //public OrderState ChangeOrderState(Order order)
-        //{
-        //    Order orderToModify = db.Orders.Find(order.OrderId);
-        //    orderToModify.OrderState = order.OrderState;
-        //    db.SaveChanges();
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public OrderState ChangeOrderState(Order order)
+        {
+            Order orderToModify = db.Orders.Find(order.OrderId);
+            orderToModify.OrderState = order.OrderState;
+            db.SaveChanges();
 
-        //    if (orderToModify.OrderState == OrderState.Shipped)
-        //    {
-        //        // Schedule confirmation
-        //        //string url = Url.Action("SendStatusEmail", "Manage", new { orderid = orderToModify.OrderId, lastname = orderToModify.LastName }, Request.Url.Scheme);
+            if (orderToModify.OrderState == OrderState.Shipped)
+            {
+                // Schedule confirmation
+                //string url = Url.Action("SendStatusEmail", "Manage", new { orderid = orderToModify.OrderId, lastname = orderToModify.LastName }, Request.Url.Scheme);
 
-        //        //BackgroundJob.Enqueue(() => Helpers.CallUrl(url));
+                //BackgroundJob.Enqueue(() => Helpers.CallUrl(url));
 
-        //        //IMailService mailService = new HangFirePostalMailService();
-        //        //mailService.SendOrderShippedEmail(orderToModify);
+                //IMailService mailService = new HangFirePostalMailService();
+                //mailService.SendOrderShippedEmail(orderToModify);
 
-        //        mailService.SendOrderShippedEmail(orderToModify);
 
-        //        //dynamic email = new Postal.Email("OrderShipped");
-        //        //email.To = orderToModify.Email;
-        //        //email.OrderId = orderToModify.OrderId;
-        //        //email.FullAddress = string.Format("{0} {1}, {2}, {3}", orderToModify.FirstName, orderToModify.LastName, orderToModify.Address, orderToModify.CodeAndCity);
-        //        //email.Send();
-        //    }
+                //dynamic email = new Postal.Email("OrderShipped");
+                //email.To = orderToModify.Email;
+                //email.OrderId = orderToModify.OrderId;
+                //email.FullAddress = string.Format("{0} {1}, {2}, {3}", orderToModify.FirstName, orderToModify.LastName, orderToModify.Address, orderToModify.CodeAndCity);
+                //email.Send();
+            }
 
-        //    return order.OrderState;
-        //}
+            return order.OrderState;
+        }
 
         //[AllowAnonymous]
         //public ActionResult SendStatusEmail(int orderid, string lastname)

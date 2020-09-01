@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace JCPCars.Controllers
-{
+{   
     public class HomeController : Controller
     {
         private StoreContext db = new StoreContext();

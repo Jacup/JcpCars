@@ -23,12 +23,15 @@ namespace JCPCars.DAL
         public virtual DbSet<Car> Cars { get; set; }
         public DbSet<Serie> Series { get; set; }
 
+        public virtual DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             //        modelBuilder.Entity<ApplicationUser>().HasMany(a => a.Orders).WithRequired().WillCascadeOnDelete(true);
-
+            modelBuilder.Entity<Order>().HasRequired(o => o.User);
 
             //.HasForeignKey(p => p.DepartmentId)
             //.WillCascadeOnDelete(false);
