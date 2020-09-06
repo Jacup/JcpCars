@@ -1,0 +1,69 @@
+﻿@model IEnumerable<JCPCars.Models.Car>
+@{
+    ViewBag.Title = "OrdersList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+
+    <hr />
+
+    <h2 class="manageHeader">Twoje zamówienia</h2>
+
+    <div>
+
+        @if (Model.Any())
+        {
+
+            <table id="cars-table">
+
+                @foreach (var car in Model)
+                {
+                    <tr>
+                        <td>
+                            <strong>Nr zamówienia: </strong>@car.CarId
+                        </td>
+                        <td>
+                            <strong>Data: </strong>
+                            @car.DateAdded.ToString("dd-MM-yyyy")
+                        </td>
+                        <td>
+                            <strong>Stan: </strong><br />
+
+
+                        </td>
+
+                        <td>
+                            <strong>Dane wysyłkowe:</strong><br />
+                            @car.CarBrand @car.CarModel<br />
+                        </td>
+                        <td>
+                            <strong>Łączny koszt:</strong> @car.Price zł
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+
+                    <!-- Next car -->
+
+                }
+
+
+            </table>
+        }
+        else
+        {
+            <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+                Brak zamówień.
+            </div>
+        }
+    </div>
+
+
+
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+

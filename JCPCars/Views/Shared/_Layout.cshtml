@@ -63,6 +63,8 @@
                     <nav class="android-navigation mdl-navigation">
                         <a class="mdl-navigation__link mdl-typography--text-uppercase" href="@Url.Content("~/")">Strona główna</a>
                         <a class="mdl-navigation__link mdl-typography--text-uppercase" href="@Url.Content("~/Manage/AddProduct")">Dodaj ogłoszenie</a>
+                        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="@Url.Content("~/Manage/CarsList")">Moje ogłoszenia</a>
+
 
                     </nav>
                 </div>
@@ -92,8 +94,9 @@
                 @if (Request.IsAuthenticated)
                 {
 
-                    <a class="mdl-navigation__link" href="">Moje ogłoszenia</a>
                     <a class="mdl-navigation__link" href="@Url.Content("~/Manage/AddProduct")">Dodaj nowe ogłoszenie</a>
+                    <a class="mdl-navigation__link" href="@Url.Content("~/Manage/CarsList")">Moje ogłoszenia</a>
+
                 }
                 else
                 {

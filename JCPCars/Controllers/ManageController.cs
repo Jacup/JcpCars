@@ -263,27 +263,25 @@ namespace JCPCars.Controllers
         }
 
 
-        public ActionResult OrdersList()
+        public ActionResult CarsList()
         {
             bool isAdmin = User.IsInRole("Admin");
             ViewBag.UserIsAdmin = isAdmin;
 
-            IEnumerable<Order> userOrders;
+            IEnumerable<Car> userCars;
 
             // For admin users - return all orders
             if (isAdmin)
             {
-                userOrders = db.Orders.Include("OrderItems").
-                    OrderByDescending(o => o.DateCreated).ToArray();
+                userCars = db.Cars;
             }
             else
             {
                 var userId = User.Identity.GetUserId();
-                userOrders = db.Orders.Where(o => o.UserId == userId).Include("OrderItems").
-                    OrderByDescending(o => o.DateCreated).ToArray();
+                userCars = db.Cars.Where(o => o.UserId == userId);
             }
 
-            return View(userOrders);
+            return View(userCars);
         }
 
         [HttpPost]
@@ -315,52 +313,8 @@ namespace JCPCars.Controllers
             return order.OrderState;
         }
 
-        //[AllowAnonymous]
-        //public ActionResult SendStatusEmail(int orderid, string lastname)
-        //{
-        //    // This could also be used (but problems when hosted on Azure Websites)
-        //    // if (Request.IsLocal)            
 
-        //    var orderToModify = db.Orders.Include("OrderItems").Include("OrderItems.Album").SingleOrDefault(o => o.OrderId == orderid && o.LastName == lastname);
-
-        //    if (orderToModify == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-
-        //    OrderShippedEmail email = new OrderShippedEmail();
-        //    email.To = orderToModify.Email;
-        //    email.OrderId = orderToModify.OrderId;
-        //    email.FullAddress = string.Format("{0} {1}, {2}, {3}", orderToModify.FirstName, orderToModify.LastName, orderToModify.Address, orderToModify.CodeAndCity);
-        //    email.Send();
-
-        //    return new HttpStatusCodeResult(HttpStatusCode.OK);
-        //}
-
-        //[AllowAnonymous]
-        //public ActionResult SendConfirmationEmail(int orderid, string lastname)
-        //{
-        //    // orderid and lastname as a basic form of auth
-
-        //    // Also might be called by scheduler (ie. Azure scheduler), pinging endpoint and using some kind of queue / db
-
-        //    // This could also be used (but problems when hosted on Azure Websites)
-        //    // if (Request.IsLocal)            
-
-        //    var order = db.Orders.Include("OrderItems").Include("OrderItems.Album").SingleOrDefault(o => o.OrderId == orderid && o.LastName == lastname);
-
-        //    if (order == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-
-        //    OrderConfirmationEmail email = new OrderConfirmationEmail();
-        //    email.To = order.Email;
-        //    email.Cost = order.TotalPrice;
-        //    email.OrderNumber = order.OrderId;
-        //    email.FullAddress = string.Format("{0} {1}, {2}, {3}", order.FirstName, order.LastName, order.Address, order.CodeAndCity);
-        //    email.OrderItems = order.OrderItems;
-        //    email.CoverPath = AppConfig.PhotosFolderRelative;
-        //    email.Send();
-
-        //    return new HttpStatusCodeResult(HttpStatusCode.OK);
-        //}
-
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         public ActionResult AddProduct(int? carId, bool? confirmSuccess)
         {
             if (carId.HasValue)
@@ -372,6 +326,10 @@ namespace JCPCars.Controllers
             var series = db.Series.ToArray();
             result.Series = series;
             result.ConfirmSuccess = confirmSuccess;
+
+            var user = UserManager.FindById(User.Identity.GetUserId());
+
+
 
             Car a;
 
@@ -388,6 +346,7 @@ namespace JCPCars.Controllers
 
             return View(result);
         }
+
         [HttpPost]
         public ActionResult AddProduct(HttpPostedFileBase file, EditProductViewModel model)
         {
@@ -418,6 +377,9 @@ namespace JCPCars.Controllers
                     // Save info to DB
                     model.Car.PictureFileName = filename;
                     model.Car.DateAdded = DateTime.Now;
+
+                    var userId = User.Identity.GetUserId();
+                    model.Car.UserId = userId;
 
                     db.Entry(model.Car).State = EntityState.Added;
                     db.SaveChanges();

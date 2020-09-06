@@ -37,15 +37,19 @@
             <a class="manageLink" href="@Url.Action("Index", "Manage")">
                 Twoje dane
             </a>
+            <a class="manageLink" href="@Url.Action("CarsList", "Manage")">
+                Twoje ogłoszenia
+            </a>
             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
             {
                 <a class="manageLink" href="@Url.Action("AddProduct", "Manage")">
                     Dodaj produkt
                 </a>
-            }
-                @Html.Partial("_LoginPartial")
 
-            </div>
+            }
+            @Html.Partial("_LoginPartial")
+
+        </div>
         <a id="main-header-logo" href="@Url.Content("~/")">
             <img src="../Content/Images/jcpcars-logo-main.png" class="center" />
         </a>
