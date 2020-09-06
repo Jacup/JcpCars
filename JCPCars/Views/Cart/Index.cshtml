@@ -14,6 +14,47 @@
         </div>
 
 
+        <section class="content-section">
+            <div class="section-header" style="margin-bottom: 0px;">
+                <h1>Twój koszyk</h1>
+            </div>
+            <table id="cart-table">
+                @foreach (var cartItem in Model.CartItems)
+                {
+                    <tr id="cart-row-@cartItem.Car.CarId">
+                        <td>
+                            <a href="@Url.Action("Details", "Store", new { id = cartItem.Car.CarId })">
+                                <img src="@Url.Content("~/Content/Covers/" + cartItem.Car.PictureFileName)" />
+                            </a>
+                        </td>
+                        <td><a href="@Url.Action("Details", "Store", new { id = cartItem.Car.CarId })">@cartItem.Car.CarModel</a></td>
+                        <td>Ilość: <span id="cart-item-count-@cartItem.Car.CarId">@cartItem.Quantity</span></td>
+                        <td>@String.Format("{0:0.##}", cartItem.TotalPrice) zł</td>
+                        <td><a class="removeProduct" data-id="@cartItem.Car.CarId" href="#">Usuń</a></td>
+                    </tr>
+                }
+
+                <tr id="cart-empty-message" @if (Model.CartItems != null && Model.CartItems.Count > 0) { <text> class="hidden" </text> }>
+                    <td>Twój koszyk jest pusty. Może warto coś do niego dodać?</td>
+                </tr>
+
+            </table>
+
+            <div id="total-price">
+                Razem: <span id="total-price-value">@String.Format("{0:0.##}", Model.TotalPrice)</span> zł
+            </div>
+
+            <div class="section-button-container">
+                <a class="button-link" href="">Kontynuuj zakupy</a>
+                @if (Model.TotalPrice > 0)
+                {
+                    <a class="button-link" id="cart-button-checkout" href="@Url.Action("Checkout", "Cart")">Kupuję</a>
+                }
+            </div>
+        </section>
+
+
+
     </div>
 </div>
 
