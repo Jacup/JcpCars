@@ -1,69 +1,102 @@
 ﻿@model IEnumerable<JCPCars.Models.Car>
 @{
-    ViewBag.Title = "OrdersList";
+    if (@User.IsInRole("Admin"))
+    {
+        ViewBag.Title = "Zarządzaj ogłoszeniami";
+    }
+    else
+    {
+        ViewBag.Title = "Moje ogłoszenia";
+    }
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-<div>
+<style>
+    .demo-card-wide.mdl-card {
+        width: 100%;
+        margin-bottom: 50px;
+    }
 
-    <hr />
+    .demo-card-wide > .mdl-card__title {
+        color: #000;
+    }
 
-    <h2 class="manageHeader">Twoje zamówienia</h2>
+    .demo-card-wide > .mdl-card__menu {
+        color: #fff;
+    }
 
-    <div>
+    .mdl-card__actions {
+        text-align: center;
+    }
 
-        @if (Model.Any())
+    .mdl-card__supporting-text {
+        width: 100%
+    }
+
+    .mdl-card__media:hover .image {
+        opacity: 0.9;
+    }
+
+    .image {
+        transition: 0.4s ease-in-out
+    }
+</style>
+
+
+<body>
+
+    <div class="android-more-section">
+        @if (@User.IsInRole("Admin"))
         {
-
-            <table id="cars-table">
-
-                @foreach (var car in Model)
-                {
-                    <tr>
-                        <td>
-                            <strong>Nr zamówienia: </strong>@car.CarId
-                        </td>
-                        <td>
-                            <strong>Data: </strong>
-                            @car.DateAdded.ToString("dd-MM-yyyy")
-                        </td>
-                        <td>
-                            <strong>Stan: </strong><br />
-
-
-                        </td>
-
-                        <td>
-                            <strong>Dane wysyłkowe:</strong><br />
-                            @car.CarBrand @car.CarModel<br />
-                        </td>
-                        <td>
-                            <strong>Łączny koszt:</strong> @car.Price zł
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="6"></td>
-                    </tr>
-
-                    <!-- Next car -->
-
-                }
-
-
-            </table>
+            <div class="android-section-title mdl-typography--display-1-color-contrast">Zarządzaj ogłoszeniami</div>
         }
         else
         {
-            <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
-                Brak zamówień.
-            </div>
+            <div class="android-section-title mdl-typography--display-1-color-contrast">Moje ogłoszenia</div>
+
         }
+        <div class="android-card-container mdl-grid">
+
+
+
+            @if (Model.Any())
+            {
+                foreach (var car in Model)
+                {
+                    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+                        <div class="mdl-card__media">
+                            <a href="@Url.Action("Details", "Store", new { id = car.CarId })">
+                                <img src="@Url.CarIconPath(car.PictureFileName)" class="image">
+                            </a>
+                        </div>
+                        <div class="mdl-card__title">
+                            <h4 class="mdl-card__title-text">@car.CarBrand @car.CarModel</h4>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <span class="mdl-typography--font-light mdl-typography--subhead">@car.Price PLN</span>
+                        </div>
+                        <div class="mdl-card__actions">
+                            <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@Url.Action("Delete", "Manage", new { carId = car.CarId })">
+                                <i class="material-icons">delete</i>
+                            </a>
+                            <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@Url.Action("AddProduct", "Manage", new { carId = car.CarId })">
+                                <i class="material-icons">create</i>
+                            </a>
+                        </div>
+                    </div>
+                }
+
+            }
+            else
+            {
+                <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+                    Brak ogłoszeń. Chcesz dodać nowe?
+                </div>
+            }
+
+
+
+        </div>
     </div>
-
-
-
-</div>
-
-<script src="~/Scripts/jquery-1.10.2.js"></script>
-
+</body>

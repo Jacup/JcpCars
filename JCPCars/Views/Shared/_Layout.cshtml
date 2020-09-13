@@ -63,8 +63,14 @@
                     <nav class="android-navigation mdl-navigation">
                         <a class="mdl-navigation__link mdl-typography--text-uppercase" href="@Url.Content("~/")">Strona główna</a>
                         <a class="mdl-navigation__link mdl-typography--text-uppercase" href="@Url.Content("~/Manage/AddProduct")">Dodaj ogłoszenie</a>
-                        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="@Url.Content("~/Manage/CarsList")">Moje ogłoszenia</a>
-
+                        @if (@User.IsInRole("Admin"))
+                        {
+                            <a class="mdl-navigation__link mdl-typography--text-uppercase" href="@Url.Content("~/Manage/CarsList")">Zarządzaj ogłoszeniami</a>
+                        }
+                        else
+                        {
+                            <a class="mdl-navigation__link mdl-typography--text-uppercase" href="@Url.Content("~/Manage/CarsList")">Moje ogłoszenia</a>
+                        }
 
                     </nav>
                 </div>
@@ -123,8 +129,8 @@
                 <div class="mdl-mega-footer--top-section">
                     <div class="mdl-mega-footer--left-section">
                         <img style="padding-right:10px;" src="../Content/Images/facebook.png" href="@Url.Content("~/")">
-                        <img style="padding-right:10px;"src="../Content/Images/google.png" href="@Url.Content("~/")">
-                        <img style="padding-right:10px;"src="../Content/Images/twitter.png" href="@Url.Content("~/")">
+                        <img style="padding-right:10px;" src="../Content/Images/google.png" href="@Url.Content("~/")">
+                        <img style="padding-right:10px;" src="../Content/Images/twitter.png" href="@Url.Content("~/")">
                     </div>
                 </div>
 

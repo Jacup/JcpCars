@@ -8,7 +8,6 @@
             @Html.AntiForgeryToken()
 
             <div>
-                @*@Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
                 @Html.ActionLink("Moje konto", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" , @class = "mdl-menu__item" })
             </div>
             <div>

@@ -19,9 +19,9 @@
 
 
 
-<div class="android-customized-section" style="padding-bottom:100px">
-    <div class="android-customized-section-text">
-        <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast" style="padding-bottom:50px">Zaloguj się</div>
+<div class="android-customized-section" style="padding-bottom:100px; width:auto">
+    <div class="android-customized-section-text" style="width:512px">
+        <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast" style="padding-bottom:50px; width:512px">Zaloguj się</div>
 
 
         <div class="demo-card-wide mdl-card mdl-shadow--2dp">
@@ -35,7 +35,7 @@
                 </div>
 
 
-                <div class="mdl-card__supporting-text">
+                <div class="mdl-card__supporting-text" style="width:auto">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         @Html.TextBoxFor(o => o.Email, new { @class = "mdl-textfield__input" })
                         @*<input class="mdl-textfield__input" type="text" id="sample3">*@
@@ -64,7 +64,7 @@
 
 
         <div class="mdl-card__actions mdl-card--border">
-            <div class="mdl-card__supporting-text">
+            <div class="mdl-card__supporting-text" style="width:auto">
                 Zaloguj przez:
             </div>
 
@@ -83,7 +83,7 @@
 
         </div>
             <div class="mdl-card__actions mdl-card--border">
-                <div class="mdl-card__supporting-text">
+                <div class="mdl-card__supporting-text" style="width:auto">
                     Jeśli nie masz jeszcze u nas konta, możesz je teraz założyć. Rejestracja jest bezpłatna.
                 </div>
                 <a href="@Url.Action("Register")" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">

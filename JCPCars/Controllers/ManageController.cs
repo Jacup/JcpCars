@@ -397,7 +397,7 @@ namespace JCPCars.Controllers
 
         }
         // GET: PersonalDetails/Delete
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult Delete(int? carId)
         {
             if (carId == null)
@@ -409,18 +409,20 @@ namespace JCPCars.Controllers
             {
                 return HttpNotFound();
             }
-            return View(car);
+
+                return View(car);
+
         }
 
         // POST: Cars/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int carId)
+        public ActionResult  DeleteConfirmed(int carId)
         {
             Car car = db.Cars.Find(carId);
             db.Cars.Remove(car);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("CarsList");
         }
     }
 }

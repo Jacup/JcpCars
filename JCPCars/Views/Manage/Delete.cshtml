@@ -1,10 +1,48 @@
 ﻿@model JCPCars.Models.Car
 
 @{
-    ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_ManageLayout.cshtml";
+    ViewBag.Title = "Usuwanie produktu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-}
+
+
+
+<div class="android-customized-section" style="padding-bottom:100px">
+    <div class="android-customized-section-text">
+        <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast" style="padding-bottom:50px">Zaloguj się</div>
+
+
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width:auto">
+            <div class="mdl-card__supporting-text" style="width:auto">
+                Czy na pewno chcesz usunąć @Html.DisplayFor(model => model.CarBrand) @Html.DisplayFor(model => model.CarModel)?
+
+            </div>
+            <div class="mdl-card__actions">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Usuń" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="color:red" />
+                    <a href="@Url.Content("~/Manage/CarsList")">
+                        <input type="submit" value="anuluj" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" />
+                    </a>
+
+
+
+                    
+                }
+            </div>
+
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
 
 <h3>Czy na pewno chcesz usunąć tę pozycję?</h3>
 <div>
