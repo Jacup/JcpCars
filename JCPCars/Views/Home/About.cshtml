@@ -95,6 +95,7 @@
                     <h4 class="my-4 h4">Additional information</h4>
 
                     <p>
+                        <input placeholder="Select your date" type="text" name="checkIn" id="datepicker" value="" class="calendar"><i class="fas fa-calendar-check icon"></i>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
                         voluptates,
                         quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.
@@ -136,9 +137,19 @@
         </div>
     </main>
     <!--Main layout-->
-
     <!-- SCRIPTS -->
     <!-- JQuery -->
+    <script>
+        $(document).ready(function () {
+            $('#datepicker').datepicker({
+                format: 'dd-mm-yyyy',
+                startDate: '+1d'
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script type="text/javascript" src="~/Content/js/jquery-3.4.1.min.js"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="~/Content/js/popper.min.js"></script>

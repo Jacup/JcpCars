@@ -28,11 +28,6 @@ namespace JCPCars.Controllers
 
         public CartController(ISessionManager sessionManager)
         {
-
-            // Simple way - but hard coupling
-            //this.sessionManager = new SessionManager();
-
-            // DI way
             this.sessionManager = sessionManager;
         }
 
@@ -139,44 +134,7 @@ namespace JCPCars.Controllers
                 // Empty cart
                 shoppingCartManager.EmptyCart();
 
-                // Send mail confirmation
-                // Refetch - need also cars details
-                //var order = db.Orders.Include("OrderItems").SingleOrDefault(o => o.OrderId == newOrder.OrderId);            
                 var order = db.Orders.Include("OrderItems").Include("OrderItems.Car").SingleOrDefault(o => o.OrderId == newOrder.OrderId);
-
-
-                //IMailService mailService = new HangFirePostalMailService();
-                //mailService.SendOrderConfirmationEmail(order);
-
-
-                //string url = Url.Action("SendConfirmationEmail", "Cart", new { orderid = newOrder.OrderId, lastname = newOrder.LastName }, Request.Url.Scheme);
-
-                //// Hangfire - nice one (if ASP.NET app will be still running)
-                //BackgroundJob.Enqueue(() => Helpers.CallUrl(url));
-
-
-
-                //// Strongly typed - without background
-                ////OrderConfirmationEmail email = new OrderConfirmationEmail();
-                ////email.To = order.Email;
-                ////email.Cost = order.TotalPrice;
-                ////email.OrderNumber = order.OrderId;
-                ////email.FullAddress = string.Format("{0} {1}, {2}, {3}", order.FirstName, order.LastName, order.Address, order.CodeAndCity);
-                ////email.OrderItems = order.OrderItems;
-                ////email.CoverPath = AppConfig.PhotosFolderRelative;
-
-                //// Loosely typed - without background
-                ////dynamic email = new Postal.Email("OrderConfirmation");
-                ////email.To = order.Email;
-                ////email.Cost = order.TotalPrice;
-                ////email.OrderNumber = order.OrderId;
-                ////email.FullAddress = string.Format("{0} {1}, {2}, {3}", order.FirstName, order.LastName, order.Address, order.CodeAndCity);
-                ////email.OrderItems = order.OrderItems;
-                ////email.CoverPath = AppConfig.PhotosFolderRelative;
-                ////email.Send();
-
-                //// Easiest background
-                ////HostingEnvironment.QueueBackgroundWorkItem(ct => email.Send());
 
                 return RedirectToAction("OrderConfirmation");
             }
