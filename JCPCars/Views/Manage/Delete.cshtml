@@ -5,32 +5,45 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    .demo-card-wide.mdl-card {
+        width: 512px;
+    }
 
 
-<div class="android-customized-section" style="padding-bottom:100px">
-    <div class="android-customized-section-text">
-        <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast" style="padding-bottom:50px">Zaloguj się</div>
+    .demo-card-wide > .mdl-card__menu {
+        color: #fff;
+    }
+</style>
 
 
-        <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width:auto">
-            <div class="mdl-card__supporting-text" style="width:auto">
-                Czy na pewno chcesz usunąć @Html.DisplayFor(model => model.CarBrand) @Html.DisplayFor(model => model.CarModel)?
+<div class="android-customized-section" style="padding-bottom:100px; width:auto">
+    <div class="android-customized-section-text" style="width:512px">
+        <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast" style="padding-bottom:50px; width:512px">Potwierdź usunięcie</div>
 
-            </div>
-            <div class="mdl-card__actions">
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()
+
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+
+                <div class="mdl-card__supporting-text" style="width:auto">
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        Czy na pewno chcesz usunąć @Html.DisplayFor(model => model.CarBrand) @Html.DisplayFor(model => model.CarModel)?
+                    </div>
+                </div>
+                <div class="mdl-card__actions" style="position: absolute; bottom: 0px">
                     <input type="submit" value="Usuń" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="color:red" />
                     <a href="@Url.Content("~/Manage/CarsList")">
                         <input type="submit" value="anuluj" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" />
                     </a>
+                </div>
 
 
-
-                    
-                }
-            </div>
+            }
+        </div>
 
 
 
@@ -38,37 +51,6 @@
     </div>
 </div>
 
-
-
-
-
-
-
-<h3>Czy na pewno chcesz usunąć tę pozycję?</h3>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CarBrand):
-            @Html.DisplayFor(model => model.CarBrand)
-        </dt>
-        <dt></dt>
-        <dt>
-            @Html.DisplayNameFor(model => model.CarModel):
-            @Html.DisplayFor(model => model.CarModel)
-        </dt>
-    </dl>
-    <br /><br />
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" />
-            |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
 
 
 @section ScriptsBottom

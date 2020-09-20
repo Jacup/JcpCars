@@ -38,7 +38,6 @@
                 <div class="mdl-card__supporting-text" style="width:auto">
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         @Html.TextBoxFor(o => o.Email, new { @class = "mdl-textfield__input" })
-                        @*<input class="mdl-textfield__input" type="text" id="sample3">*@
                         <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.Email, "E-mail:")</label>
                         @Html.ValidationMessageFor(o => o.Email)
 
@@ -48,7 +47,6 @@
 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         @Html.PasswordFor(o => o.Password, new { @class = "mdl-textfield__input" })
-                        @*<input class="mdl-textfield__input" type="password" id="Password">*@
                         <label class="mdl-textfield__label" for="Password">@Html.LabelFor(o => o.Password, "Hasło")</label>
                         @Html.ValidationMessageFor(o => o.Password)
                     </div>

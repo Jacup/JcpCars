@@ -211,7 +211,6 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="DAL\StoreContext.cs" />
     <Compile Include="DAL\StoreInitializer.cs" />
@@ -250,6 +249,10 @@
     <Compile Include="Migrations\202009061931495_test1.cs" />
     <Compile Include="Migrations\202009061931495_test1.designer.cs">
       <DependentUpon>202009061931495_test1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009181455455_dates1.cs" />
+    <Compile Include="Migrations\202009181455455_dates1.designer.cs">
+      <DependentUpon>202009181455455_dates1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
@@ -658,6 +661,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009061931495_test1.resx">
       <DependentUpon>202009061931495_test1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009181455455_dates1.resx">
+      <DependentUpon>202009181455455_dates1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
