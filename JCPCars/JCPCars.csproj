@@ -211,6 +211,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="DAL\StoreContext.cs" />
     <Compile Include="DAL\StoreInitializer.cs" />
@@ -226,37 +227,14 @@
     <Compile Include="Infrastructure\SessionManager.cs" />
     <Compile Include="Infrastructure\ShoppingCartManager.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
-    <Compile Include="Migrations\202008261611552_init.cs" />
-    <Compile Include="Migrations\202008261611552_init.designer.cs">
-      <DependentUpon>202008261611552_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009011758116_ordertest1.cs" />
-    <Compile Include="Migrations\202009011758116_ordertest1.designer.cs">
-      <DependentUpon>202009011758116_ordertest1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009012018253_cart.v2.cs" />
-    <Compile Include="Migrations\202009012018253_cart.v2.designer.cs">
-      <DependentUpon>202009012018253_cart.v2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009061817505_newCarModel.cs" />
-    <Compile Include="Migrations\202009061817505_newCarModel.designer.cs">
-      <DependentUpon>202009061817505_newCarModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009061844294_restoredCar.cs" />
-    <Compile Include="Migrations\202009061844294_restoredCar.designer.cs">
-      <DependentUpon>202009061844294_restoredCar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009061931495_test1.cs" />
-    <Compile Include="Migrations\202009061931495_test1.designer.cs">
-      <DependentUpon>202009061931495_test1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009181455455_dates1.cs" />
-    <Compile Include="Migrations\202009181455455_dates1.designer.cs">
-      <DependentUpon>202009181455455_dates1.cs</DependentUpon>
+    <Compile Include="Migrations\202009202158448_v1.cs" />
+    <Compile Include="Migrations\202009202158448_v1.designer.cs">
+      <DependentUpon>202009202158448_v1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\CustomerDetails.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Message.cs" />
@@ -624,11 +602,11 @@
     <Content Include="Views\Manage\Delete.cshtml" />
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
     <Content Include="Views\Manage\_ManageCar.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Default\" />
-    <Folder Include="Views\Message\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -644,26 +622,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008261611552_init.resx">
-      <DependentUpon>202008261611552_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009011758116_ordertest1.resx">
-      <DependentUpon>202009011758116_ordertest1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009012018253_cart.v2.resx">
-      <DependentUpon>202009012018253_cart.v2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009061817505_newCarModel.resx">
-      <DependentUpon>202009061817505_newCarModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009061844294_restoredCar.resx">
-      <DependentUpon>202009061844294_restoredCar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009061931495_test1.resx">
-      <DependentUpon>202009061931495_test1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009181455455_dates1.resx">
-      <DependentUpon>202009181455455_dates1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009202158448_v1.resx">
+      <DependentUpon>202009202158448_v1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

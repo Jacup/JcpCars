@@ -22,7 +22,7 @@ namespace JCPCars.DAL
 
         public virtual DbSet<Car> Cars { get; set; }
         public DbSet<Serie> Series { get; set; }
-
+        public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
 
