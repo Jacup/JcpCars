@@ -227,14 +227,13 @@
     <Compile Include="Infrastructure\SessionManager.cs" />
     <Compile Include="Infrastructure\ShoppingCartManager.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
-    <Compile Include="Migrations\202009202158448_v1.cs" />
-    <Compile Include="Migrations\202009202158448_v1.designer.cs">
-      <DependentUpon>202009202158448_v1.cs</DependentUpon>
+    <Compile Include="Migrations\202009211947127_v1.cs" />
+    <Compile Include="Migrations\202009211947127_v1.designer.cs">
+      <DependentUpon>202009211947127_v1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\CartItem.cs" />
-    <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\CustomerDetails.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Message.cs" />
@@ -250,6 +249,7 @@
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
+    <Compile Include="ViewModels\MessageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -603,6 +603,7 @@
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
     <Content Include="Views\Manage\_ManageCar.cshtml" />
     <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Message\SendMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -622,8 +623,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009202158448_v1.resx">
-      <DependentUpon>202009202158448_v1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009211947127_v1.resx">
+      <DependentUpon>202009211947127_v1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

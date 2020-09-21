@@ -13,7 +13,7 @@ namespace JCPCars.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202009202158448_v1"; }
+            get { return "202009211947127_v1"; }
         }
         
         string IMigrationMetadata.Source

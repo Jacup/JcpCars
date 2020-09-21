@@ -107,8 +107,17 @@
                 c => new
                     {
                         MessageId = c.Int(nullable: false, identity: true),
+                        Created = c.DateTime(nullable: false),
+                        Content = c.String(),
+                        ToUserId = c.String(),
+                        UserId = c.String(maxLength: 128),
+                        CarId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.MessageId);
+                .PrimaryKey(t => t.MessageId)
+                .ForeignKey("dbo.Cars", t => t.CarId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .Index(t => t.UserId)
+                .Index(t => t.CarId);
             
             CreateTable(
                 "dbo.OrderItems",
@@ -167,6 +176,8 @@
             DropForeignKey("dbo.Orders", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.OrderItems", "OrderId", "dbo.Orders");
             DropForeignKey("dbo.OrderItems", "CarId", "dbo.Cars");
+            DropForeignKey("dbo.Messages", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Messages", "CarId", "dbo.Cars");
             DropForeignKey("dbo.Cars", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
@@ -176,6 +187,8 @@
             DropIndex("dbo.Orders", new[] { "UserId" });
             DropIndex("dbo.OrderItems", new[] { "CarId" });
             DropIndex("dbo.OrderItems", new[] { "OrderId" });
+            DropIndex("dbo.Messages", new[] { "CarId" });
+            DropIndex("dbo.Messages", new[] { "UserId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
