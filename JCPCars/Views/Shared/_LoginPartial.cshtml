@@ -1,27 +1,30 @@
 ﻿@using Microsoft.AspNet.Identity
 
-<div id="login-header">
-    @if (Request.IsAuthenticated)
-    {
-        using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { id = "logoutForm"}))
+    <div id="login-header">
+        @if (Request.IsAuthenticated)
         {
-            @Html.AntiForgeryToken()
+            using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
 
+                <div>
+                    @Html.ActionLink("Moje konto", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "mdl-menu__item" })
+                </div>
+                <div>
+                    <a class="mdl-menu__item" href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+                </div>
+                <div>
+                    @Html.ActionLink("Wiadomości", "List", "Message", routeValues: null, htmlAttributes: new { title = "Message", @class = "mdl-menu__item" })
+                </div>
+            }
+        }
+        else
+        {
             <div>
-                @Html.ActionLink("Moje konto", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" , @class = "mdl-menu__item" })
+                @Html.ActionLink("Rejestracja", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "mdl-menu__item" })
             </div>
             <div>
-                <a class="mdl-menu__item" href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+                @Html.ActionLink("Zaloguj", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "mdl-menu__item" })
             </div>
         }
-    }
-    else
-    {
-        <div>
-            @Html.ActionLink("Rejestracja", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "mdl-menu__item" })
-        </div>
-        <div>
-            @Html.ActionLink("Zaloguj", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "mdl-menu__item" })
-        </div>
-    }
-</div>
+    </div>

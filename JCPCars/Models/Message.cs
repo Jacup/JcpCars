@@ -15,6 +15,7 @@ namespace JCPCars.Models
 
 
         //data
+        [MaxLength(500), MinLength(10)]
         public string Content { get; set; }
 
 

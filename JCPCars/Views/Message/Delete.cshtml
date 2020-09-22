@@ -1,7 +1,7 @@
-﻿@model JCPCars.Models.Car
+﻿@model JCPCars.Models.Message
 
 @{
-    ViewBag.Title = "Usuwanie produktu";
+    ViewBag.Title = "Usuwanie wiadomości";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -31,7 +31,7 @@
                 <div class="mdl-card__supporting-text" style="width:auto">
 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        Czy na pewno chcesz usunąć @Html.DisplayFor(model => model.CarBrand) @Html.DisplayFor(model => model.CarModel)?
+                        Czy na pewno chcesz usunąć wiadomość dotyczącej auta @Html.DisplayFor(model => model.Car.CarBrand) @Html.DisplayFor(model => model.Car.CarModel)?
                     </div>
                 </div>
                 <div class="mdl-card__actions" style="position: absolute; bottom: 0px">
@@ -41,8 +41,7 @@
 
 
             }
-
-            <a href="@Url.Content("~/Manage/CarsList")">
+            <a href="@Url.Content("~/Message/List")">
                 <input type="submit" value="anuluj" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" />
             </a>
         </div>

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<JCPCars.Models.Message>
+@{
+
+    ViewBag.Title = "Wiadomości";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    .demo-card-wide.mdl-card {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .demo-card-wide > .mdl-card__title {
+        color: #000;
+    }
+
+    .demo-card-wide > .mdl-card__menu {
+        color: #fff;
+    }
+
+    .mdl-card__actions {
+        text-align: center;
+    }
+
+    .mdl-card__supporting-text {
+        width: 100%
+    }
+
+    .mdl-card__media:hover .image {
+        opacity: 0.9;
+    }
+
+    .image {
+        transition: 0.4s ease-in-out
+    }
+</style>
+
+
+<body>
+
+    <div class="android-more-section">
+        <div class="android-section-title mdl-typography--display-1-color-contrast">Wiadomości</div>
+        <div class="android-card-container mdl-grid">
+
+
+
+            @if (Model.Any())
+            {
+                foreach (var message in Model)
+                {
+            <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--8-col-phone mdl-card mdl-shadow--3dp">
+                <div class="mdl-card__media">
+                </div>
+                <div class="mdl-card__title">
+                    <h4 class="mdl-card__title-text">Wiadomość dotycząca auta @message.Car.CarBrand @message.Car.CarModel</h4>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <span class="mdl-typography--font-light mdl-typography--subhead">Nadawca: @message.User.Email</span>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <span class="mdl-typography--font-light mdl-typography--subhead">@message.Content</span>
+                </div>
+                <div class="mdl-card__actions">
+                    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@Url.Action("Delete", "Message", new { messageId = message.MessageId })">
+                        <i class="material-icons">delete</i>
+                    </a>
+                    @*<a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@Url.Action("AddProduct", "Manage", new { carId = car.CarId })">
+                <i class="material-icons">create</i>
+            </a>*@
+                </div>
+            </div>
+                }
+
+            }
+            else
+            {
+                <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+                    Brak wiadomości
+                </div>
+            }
+
+
+
+        </div>
+    </div>
+</body>

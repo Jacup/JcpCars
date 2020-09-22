@@ -37,15 +37,6 @@ namespace JCPCars.Controllers
             UserManager = userManager;
         }
 
-        public enum ManageMessageId
-        {
-            ChangePasswordSuccess,
-            SetPasswordSuccess,
-            RemoveLoginSuccess,
-            LinkSuccess,
-            Error
-        }
-
         private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
         {
@@ -67,9 +58,38 @@ namespace JCPCars.Controllers
             }
         }
 
-        [Authorize]
-        public ActionResult SendMessage(int id, bool? confirmSuccess)
+
+
+        public ActionResult List()
         {
+            bool isAdmin = User.IsInRole("Admin");
+            ViewBag.UserIsAdmin = isAdmin;
+
+            IEnumerable<Message> userMessages;
+
+            // For admin users - return all orders
+            if (isAdmin)
+            {
+                userMessages = db.Messages;
+            }
+            else
+            {
+                var userId = User.Identity.GetUserId();
+                userMessages = db.Messages.Where(o => o.ToUserId == userId);
+            }
+
+            return View(userMessages);
+        }
+
+
+
+        [Authorize]
+        public ActionResult Index(int? id, bool? confirmSuccess)
+        {
+            if (id.HasValue)
+                ViewBag.EditMode = true;
+            else
+                ViewBag.EditMode = false;
 
             Car car = db.Cars.Find(id);
 
@@ -94,14 +114,14 @@ namespace JCPCars.Controllers
         }
 
         [HttpPost]
-        public ActionResult SendMessage(int id, MessageViewModel model)
+        public ActionResult Index(int id, MessageViewModel model)
         {
             if (model.Message.MessageId > 0)
             {
 
                 db.Entry(model.Message).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("SendMessage", new { confirmSuccess = true });
+                return RedirectToAction("Index", new { confirmSuccess = true });
             }
             else
             {
@@ -125,7 +145,7 @@ namespace JCPCars.Controllers
                     db.Entry(model.Message).State = EntityState.Added;
                     db.SaveChanges();
 
-                    return RedirectToAction("SendMessage", new { confirmSuccess = true });
+                    return RedirectToAction("Index", new { confirmSuccess = true });
                 }
                 else
                 {
@@ -137,6 +157,35 @@ namespace JCPCars.Controllers
             }
 
         }
+
+
+        public ActionResult Delete(int? messageId)
+        {
+            if (messageId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Message message = db.Messages.Find(messageId);
+            if (message == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(message);
+
+        }
+
+        // POST: Messages/Delete
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int messageId)
+        {
+            Message message = db.Messages.Find(messageId);
+            db.Messages.Remove(message);
+            db.SaveChanges();
+            return RedirectToAction("List");
+        }
+
 
     }
 }

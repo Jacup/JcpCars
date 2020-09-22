@@ -231,6 +231,18 @@
     <Compile Include="Migrations\202009211947127_v1.designer.cs">
       <DependentUpon>202009211947127_v1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009212206510_v2.cs" />
+    <Compile Include="Migrations\202009212206510_v2.designer.cs">
+      <DependentUpon>202009212206510_v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009212208039_v3.cs" />
+    <Compile Include="Migrations\202009212208039_v3.designer.cs">
+      <DependentUpon>202009212208039_v3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009212212262_v4.cs" />
+    <Compile Include="Migrations\202009212212262_v4.designer.cs">
+      <DependentUpon>202009212212262_v4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -560,7 +572,6 @@
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Cart\OrderConfirmation.cshtml" />
     <Content Include="Views\Manage\CarsList.cshtml" />
-    <None Include="Views\Manage\indexx.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -573,7 +584,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Manage\Index.bak.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Home\Kontakt.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
@@ -603,7 +613,8 @@
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
     <Content Include="Views\Manage\_ManageCar.cshtml" />
     <Content Include="Views\Message\Index.cshtml" />
-    <Content Include="Views\Message\SendMessage.cshtml" />
+    <Content Include="Views\Message\List.cshtml" />
+    <Content Include="Views\Message\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -625,6 +636,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009211947127_v1.resx">
       <DependentUpon>202009211947127_v1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009212206510_v2.resx">
+      <DependentUpon>202009212206510_v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009212208039_v3.resx">
+      <DependentUpon>202009212208039_v3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009212212262_v4.resx">
+      <DependentUpon>202009212212262_v4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

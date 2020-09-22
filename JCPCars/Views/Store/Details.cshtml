@@ -44,21 +44,31 @@
                             @Model.Description
                         </p>
                         @*<p>Date: <input type="text" id="datepicker"></p>*@
-                        <form class="d-flex justify-content-left" action="@Url.Action("AddToCart", "Cart", new { id = Model.CarId })">
-                            @*@Html.TextBoxFor*@
-                            @*<input type="text" name="IP" id="IP" />
-                                <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">*@
-                            <button class="btn btn-primary btn-md my-0 p" type="submit">
-                                Zamów pojazd
-                                <i class="fas fa-shopping-cart ml-1"></i>
-                            </button>
-                        </form>
-                        <form class="d-flex justify-content-left" action="@Url.Action("SendMessage", "Message", new { id = Model.CarId })">
-                            <button class="btn btn-primary btn-md my-0 p" type="submit">
-                                Skontaktuj się ze sprzedawcą 
-                                <i class="fas fa-shopping-cart ml-1"></i>
-                            </button>
-                        </form>
+                        <div>
+                            <form class="d-flex justify-content-left" action="@Url.Action("AddToCart", "Cart", new { id = Model.CarId })">
+                                @*@Html.TextBoxFor*@
+                                @*<input type="text" name="IP" id="IP" />
+                                    <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">*@
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
+                                    <i class="material-icons">shopping_cart</i>
+                                    Zamów pojazd
+                                </button>
+
+                            </form>
+                        </div>
+
+                        <div style="margin-top:10px">
+                            <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="@Url.Action("Index", "Message", new { id = Model.CarId })">
+                                    <i class="material-icons">chat</i>
+                                    Skontaktuj się ze sprzedawcą
+                            </a>
+                            @*<form class="d-flex justify-content-left" action="@Url.Action("Index", "Message", new { id = Model.CarId })">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
+                                    <i class="material-icons">chat</i>
+                                    Skontaktuj się ze sprzedawcą
+                                </button>
+                            </form>*@
+                        </div>
                     </div>
                 </div>
             </div>
@@ -85,19 +95,5 @@
         </div>
     </main>
 
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
-    @*<script type="text/javascript" src="~/Content/js/jquery-3.4.1.min.js"></script>*@
-    <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="~/Content/js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="~/Content/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="~/Content/js/mdb.min.js"></script>
-    <!-- Initializations -->
-    <script type="text/javascript">
-        // Animations initialization
-        new WOW().init();
-
-    </script>
 </body>
