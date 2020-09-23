@@ -348,7 +348,7 @@ namespace JCPCars.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddProduct(HttpPostedFileBase file, EditProductViewModel model)
+        public ActionResult AddProduct(HttpPostedFileBase file, HttpPostedFileBase file2, HttpPostedFileBase file3, EditProductViewModel model)
         {
             if (model.Car.CarId > 0)
             {
@@ -371,12 +371,30 @@ namespace JCPCars.Controllers
 
                     var fileExt = Path.GetExtension(file.FileName);
                     var filename = Guid.NewGuid() + fileExt;
-
                     var path = Path.Combine(Server.MapPath(AppConfig.CarFolderRelative), filename);
                     file.SaveAs(path);
 
-                    // Save info to DB
                     model.Car.PictureFileName = filename;
+
+                    if (file2 != null && file2.ContentLength > 0)
+                    {
+                        var file2Ext = Path.GetExtension(file2.FileName);
+                        var file2name = Guid.NewGuid() + file2Ext;
+                        var path2 = Path.Combine(Server.MapPath(AppConfig.CarFolderRelative), file2name);
+                        file2.SaveAs(path2);
+                        model.Car.PictureFileName2 = file2name;
+                    }
+
+                    if (file3 != null && file3.ContentLength > 0)
+                    {
+                        var file3Ext = Path.GetExtension(file3.FileName);
+                        var file3name = Guid.NewGuid() + file3Ext;
+                        var path3 = Path.Combine(Server.MapPath(AppConfig.CarFolderRelative), file3name);
+                        file3.SaveAs(path3);
+                        model.Car.PictureFileName2 = file3name;
+                    }
+                    // Save info to DB
+
                     model.Car.DateAdded = DateTime.Now;
 
                     var userId = User.Identity.GetUserId();
@@ -411,14 +429,14 @@ namespace JCPCars.Controllers
                 return HttpNotFound();
             }
 
-                return View(car);
+            return View(car);
 
         }
 
         // POST: Cars/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult  DeleteConfirmed(int carId)
+        public ActionResult DeleteConfirmed(int carId)
         {
             Car car = db.Cars.Find(carId);
             db.Cars.Remove(car);

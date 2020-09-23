@@ -51,15 +51,15 @@
                         <b>@Html.LabelFor(o => o.Power):</b> @Model.Power<br />
                         <b>@Html.LabelFor(o => o.Location):</b> @Model.Location<br />
 
-<hr />
+                        <hr />
                         @*<div>
-                            <form class="d-flex justify-content-left" action="@Url.Action("AddToCart", "Cart", new { id = Model.CarId })">
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
-                                    <i class="material-icons">shopping_cart</i>
-                                    Zamów pojazd
-                                </button>
-                            </form>
-                        </div>*@
+                                <form class="d-flex justify-content-left" action="@Url.Action("AddToCart", "Cart", new { id = Model.CarId })">
+                                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
+                                        <i class="material-icons">shopping_cart</i>
+                                        Zamów pojazd
+                                    </button>
+                                </form>
+                            </div>*@
 
                         <div style="margin-top:80px">
                             <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="@Url.Action("Index", "Message", new { id = Model.CarId })">
@@ -81,6 +81,8 @@
 
                 </div>
             </div>
+            <div class="row wow fadeIn">
+
                 <div class="col-lg-4 col-md-12 mb-4">
                     <img src="@Url.CarIconPath(Model.PictureFileName)" class="img-fluid" alt="">
                 </div>
@@ -97,6 +99,7 @@
                     </div>
                 }
 
+            </div>
         </div>
     </main>
 

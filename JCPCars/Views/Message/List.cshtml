@@ -58,7 +58,7 @@
                     <h4 class="mdl-card__title-text">Wiadomość dotycząca auta @message.Car.CarBrand @message.Car.CarModel</h4>
                 </div>
                 <div class="mdl-card__supporting-text">
-                    <span class="mdl-typography--font-light mdl-typography--subhead">Nadawca: @message.User.Email</span>
+                    <span class="mdl-typography--font-light mdl-typography--subhead"><b>Nadawca:</b> @message.User.Email</span>
                 </div>
                 <div class="mdl-card__supporting-text">
                     <span class="mdl-typography--font-light mdl-typography--subhead">@message.Content</span>
@@ -67,9 +67,12 @@
                     <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@Url.Action("Delete", "Message", new { messageId = message.MessageId })">
                         <i class="material-icons">delete</i>
                     </a>
+                    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@Url.Action("Delete", "Message", new { messageId = message.MessageId })">
+                        <i class="material-icons">reply</i>
+                    </a>
                     @*<a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@Url.Action("AddProduct", "Manage", new { carId = car.CarId })">
-                <i class="material-icons">create</i>
-            </a>*@
+            <i class="material-icons">create</i>
+        </a>*@
                 </div>
             </div>
                 }

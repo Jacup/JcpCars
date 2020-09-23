@@ -6,16 +6,16 @@
             using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { id = "logoutForm" }))
             {
                 @Html.AntiForgeryToken()
-
+                <div>
+                    @Html.ActionLink("Wiadomości", "List", "Message", routeValues: null, htmlAttributes: new { title = "Message", @class = "mdl-menu__item" })
+                </div>
                 <div>
                     @Html.ActionLink("Moje konto", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "mdl-menu__item" })
                 </div>
                 <div>
                     <a class="mdl-menu__item" href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
                 </div>
-                <div>
-                    @Html.ActionLink("Wiadomości", "List", "Message", routeValues: null, htmlAttributes: new { title = "Message", @class = "mdl-menu__item" })
-                </div>
+
             }
         }
         else
