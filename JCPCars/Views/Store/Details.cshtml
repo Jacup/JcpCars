@@ -29,69 +29,74 @@
                             <a href="">
                                 <span class="badge blue mr-1">@Model.Serie.Name</span>
                             </a>
-                            @*<a href="">
-                                    <span class="badge red mr-1">IF PROMOTED TODO</span>
-                                </a>*@
+                            <a href="">
+                                <span class="badge red mr-1">IF PROMOTED TODO</span>
+                            </a>
                         </div>
 
                         <p class="lead">
                             @*<span class="mr-1">
                                     <del>$200</del>
                                 </span>*@
-                            <span>@String.Format("{0:0.##}", Model.PricePer1h)PLN /24h</span>
+                            <span>@String.Format("{0:0.##}", Model.PricePer1h)PLN /1h</span><br />
+                            <span>@String.Format("{0:0.##}", Model.PricePer24h)PLN /24h</span><br />
+                            <span>@String.Format("{0:0.##}", Model.PricePer1m)PLN /miesiąc</span><br />
+
+
                         </p>
-                        <p>
-                            @Model.Description
-                        </p>
-                        @*<p>Date: <input type="text" id="datepicker"></p>*@
-                        <div>
+
+                        <b>@Html.LabelFor(o => o.Fuel):</b> @Model.Fuel<br />
+                        <b>@Html.LabelFor(o => o.Gearbox):</b> @Model.Gearbox<br />
+                        <b>@Html.LabelFor(o => o.ProductionYear):</b> @Model.ProductionYear<br />
+                        <b>@Html.LabelFor(o => o.Power):</b> @Model.Power<br />
+                        <b>@Html.LabelFor(o => o.Location):</b> @Model.Location<br />
+
+<hr />
+                        @*<div>
                             <form class="d-flex justify-content-left" action="@Url.Action("AddToCart", "Cart", new { id = Model.CarId })">
-                                @*@Html.TextBoxFor*@
-                                @*<input type="text" name="IP" id="IP" />
-                                    <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">*@
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
                                     <i class="material-icons">shopping_cart</i>
                                     Zamów pojazd
                                 </button>
-
                             </form>
-                        </div>
+                        </div>*@
 
-                        <div style="margin-top:10px">
+                        <div style="margin-top:80px">
                             <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="@Url.Action("Index", "Message", new { id = Model.CarId })">
-                                    <i class="material-icons">chat</i>
-                                    Skontaktuj się ze sprzedawcą
+                                <i class="material-icons">chat</i>
+                                Skontaktuj się ze sprzedawcą
                             </a>
-                            @*<form class="d-flex justify-content-left" action="@Url.Action("Index", "Message", new { id = Model.CarId })">
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
-                                    <i class="material-icons">chat</i>
-                                    Skontaktuj się ze sprzedawcą
-                                </button>
-                            </form>*@
                         </div>
                     </div>
                 </div>
             </div>
-            @*<div class="row d-flex justify-content-center wow fadeIn">
-                    <div class="col-md-6 text-center">
-                        <h4 class="my-4 h4">Additional information</h4>
-                        <p>
-                            LOREM
-                        </p>
+            <hr />
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 text-center">
+                    <h4 class="my-4 h4">Opis produktu</h4>
+                    <p>
+                        @Model.Description
+                    </p>
+                    <hr />
 
-                    </div>
-                </div>*@
-            @*<div class="row wow fadeIn">
-                    <div class="col-lg-4 col-md-12 mb-4">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
-                    </div>
+                </div>
+            </div>
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <img src="@Url.CarIconPath(Model.PictureFileName)" class="img-fluid" alt="">
+                </div>
+                @if (Model.PictureFileName2 != null)
+                {
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
+                        <img src="@Url.CarIconPath(Model.PictureFileName2)" class="img-fluid" alt="">
                     </div>
+                }
+                @if (Model.PictureFileName3 != null)
+                {
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
+                        <img src="@Url.CarIconPath(Model.PictureFileName3)" class="img-fluid" alt="">
                     </div>
-                </div>*@
+                }
+
         </div>
     </main>
 
