@@ -16,7 +16,7 @@ namespace JCPCars.Controllers
         public ActionResult Index()
         {
             var series = db.Series.ToList();
-            var newArrivals = db.Cars.OrderByDescending(a => a.DateAdded).Take(3).ToList();
+            var newArrivals = db.Cars.OrderByDescending(a => a.DateAdded).Take(4).ToList();
 
             var vm = new HomeViewModel()
             {

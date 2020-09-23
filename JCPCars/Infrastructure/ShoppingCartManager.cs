@@ -40,7 +40,7 @@ namespace JCPCars.Infrastructure
                     {
                         Car = carToAdd,
                         Quantity = 1,
-                        TotalPrice = carToAdd.Price
+                        TotalPrice = carToAdd.PricePer1h
                     };
 
                     cart.Add(newCartItem);
@@ -91,7 +91,7 @@ namespace JCPCars.Infrastructure
         public decimal GetCartTotalPrice()
         {
             var cart = this.GetCart();
-            return cart.Sum(c => (c.Quantity * c.Car.Price));
+            return cart.Sum(c => (c.Quantity * c.Car.PricePer1h));
         }
 
         public int GetCartItemsCount()
@@ -122,10 +122,10 @@ namespace JCPCars.Infrastructure
                 {
                     CarId = cartItem.Car.CarId,
                     Quantity = cartItem.Quantity,
-                    UnitPrice = cartItem.Car.Price
+                    UnitPrice = cartItem.Car.PricePer1h
                 };
 
-                cartTotal += (cartItem.Quantity * cartItem.Car.Price);
+                cartTotal += (cartItem.Quantity * cartItem.Car.PricePer1h);
 
                 newOrder.OrderItems.Add(newOrderItem);
             }

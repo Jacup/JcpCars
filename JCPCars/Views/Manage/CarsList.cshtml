@@ -64,27 +64,29 @@
             {
                 foreach (var car in Model)
                 {
-                    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-                        <div class="mdl-card__media">
-                            <a href="@Url.Action("Details", "Store", new { id = car.CarId })">
-                                <img src="@Url.CarIconPath(car.PictureFileName)" class="image">
-                            </a>
-                        </div>
-                        <div class="mdl-card__title">
-                            <h4 class="mdl-card__title-text">@car.CarBrand @car.CarModel</h4>
-                        </div>
-                        <div class="mdl-card__supporting-text">
-                            <span class="mdl-typography--font-light mdl-typography--subhead">@car.Price PLN</span>
-                        </div>
-                        <div class="mdl-card__actions">
-                            <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@Url.Action("Delete", "Manage", new { carId = car.CarId })">
-                                <i class="material-icons">delete</i>
-                            </a>
-                            <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@Url.Action("AddProduct", "Manage", new { carId = car.CarId })">
-                                <i class="material-icons">create</i>
-                            </a>
-                        </div>
-                    </div>
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+                <div class="mdl-card__media">
+                    <a href="@Url.Action("Details", "Store", new { id = car.CarId })">
+                        <img src="@Url.CarIconPath(car.PictureFileName)" class="image">
+                    </a>
+                </div>
+                <div class="mdl-card__title">
+                    <h4 class="mdl-card__title-text">@car.CarBrand @car.CarModel</h4>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <span class="mdl-typography--font-light mdl-typography--subhead">@car.PricePer1h PLN /1h</span> <br />
+                    <span class="mdl-typography--font-light mdl-typography--subhead">@car.PricePer24h PLN /24h </span> <br />
+                    <span class="mdl-typography--font-light mdl-typography--subhead">@car.PricePer1m PLN /miesiąc</span> <br />
+                </div>
+                <div class="mdl-card__actions">
+                    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@Url.Action("Delete", "Manage", new { carId = car.CarId })">
+                        <i class="material-icons">delete</i>
+                    </a>
+                    <a class="android-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="@Url.Action("AddProduct", "Manage", new { carId = car.CarId })">
+                        <i class="material-icons">create</i>
+                    </a>
+                </div>
+            </div>
                 }
 
             }

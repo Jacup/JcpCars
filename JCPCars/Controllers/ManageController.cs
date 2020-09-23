@@ -353,7 +353,8 @@ namespace JCPCars.Controllers
             if (model.Car.CarId > 0)
             {
                 // Saving existing entry
-
+                var userId = User.Identity.GetUserId();
+                model.Car.UserId = userId;
                 db.Entry(model.Car).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("AddProduct", new { confirmSuccess = true });

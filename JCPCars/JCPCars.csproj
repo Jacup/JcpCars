@@ -243,6 +243,14 @@
     <Compile Include="Migrations\202009212212262_v4.designer.cs">
       <DependentUpon>202009212212262_v4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009231749225_v4_cardetails.cs" />
+    <Compile Include="Migrations\202009231749225_v4_cardetails.designer.cs">
+      <DependentUpon>202009231749225_v4_cardetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009231804316_v4.1_cardetails.cs" />
+    <Compile Include="Migrations\202009231804316_v4.1_cardetails.designer.cs">
+      <DependentUpon>202009231804316_v4.1_cardetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -645,6 +653,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009212212262_v4.resx">
       <DependentUpon>202009212212262_v4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009231749225_v4_cardetails.resx">
+      <DependentUpon>202009231749225_v4_cardetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009231804316_v4.1_cardetails.resx">
+      <DependentUpon>202009231804316_v4.1_cardetails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

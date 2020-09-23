@@ -10,7 +10,13 @@
 
 
 
-
+<style>
+    textarea {
+        font-family: inherit;
+        width: 650px;
+        height: 100px;
+    }
+</style>
 
 <body>
     <!-- Main Container -->
@@ -59,11 +65,7 @@
                                     <h2 class="mdl-card__title-text">Edycja ogłoszenia</h2>
                                 </div>
                                 <div class="mdl-card__supporting-text">
-
-
-
                                     @Html.AntiForgeryToken()
-
                                     <div class="">
                                         @Html.ValidationSummary()
                                     </div>
@@ -71,6 +73,8 @@
                                     @Html.HiddenFor(o => o.Car.CarId)
                                     @Html.HiddenFor(o => o.Car.DateAdded)
                                     @Html.HiddenFor(o => o.Car.PictureFileName)
+                                    @Html.HiddenFor(o => o.Car.PictureFileName2)
+                                    @Html.HiddenFor(o => o.Car.PictureFileName3)
 
 
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -83,36 +87,71 @@
                                         <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.Car.CarModel, "Model:")</label>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        @Html.TextBoxFor(o => o.Car.Description, new { @class = "mdl-textfield__input" })
-                                        <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.Car.Description, "Opis:")</label>
-
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        @Html.TextBoxFor(o => o.Car.Price, new { @class = "mdl-textfield__input" })
-                                        <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.Car.Price, "Cena:")</label>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                         @Html.DropDownListFor(m => m.Car.SerieId, new SelectList(Model.Series, "SerieId", "Name", Model.Series.First().SerieId), new { @class = "mdl-textfield__input" })
                                         <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.Series, "Kategoria:")</label>
-
                                     </div>
 
-                                    @if (ViewBag.EditMode == null || !ViewBag.EditMode)
-                                    {
+                                </div>
+                                <div class="mdl-card__supporting-text mdl-card--border">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        @Html.TextBoxFor(o => o.Car.Fuel, new { @class = "mdl-textfield__input" })
+                                        <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.Car.Fuel, "Rodzaj paliwa:")</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        @Html.TextBoxFor(o => o.Car.Gearbox, new { @class = "mdl-textfield__input" })
+                                        <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.Car.Gearbox, "Rodzaj skrzyni biegów:")</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        @Html.TextBoxFor(o => o.Car.ProductionYear, new { @class = "mdl-textfield__input" })
+                                        <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.Car.ProductionYear, "Rok produkcji:")</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        @Html.TextBoxFor(o => o.Car.Power, new { @class = "mdl-textfield__input" })
+                                        <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.Car.Power, "Moc (KM):")</label>
+                                    </div>
+                                </div>
+                                <div class="mdl-card__supporting-text ">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        @Html.TextBoxFor(o => o.Car.PricePer1h, new { @class = "mdl-textfield__input" })
+                                        <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.Car.PricePer1h, "Cena za godzinę:")</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        @Html.TextBoxFor(o => o.Car.PricePer24h, new { @class = "mdl-textfield__input" })
+                                        <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.Car.PricePer24h, "Cena za dobę:")</label>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        @Html.TextBoxFor(o => o.Car.PricePer1m, new { @class = "mdl-textfield__input" })
+                                        <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.Car.PricePer1m, "Cena za miesiąc:")</label>
+                                    </div>
+
+                                </div>
+
+                                <div class="mdl-card__supporting-text">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        @Html.TextAreaFor(o => o.Car.Description, new { @class = "mdl-textfield__input" })
+                                        <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.Car.Description, "Opis:")</label>
+                                    </div>
+                                </div>
+
+                                if (ViewBag.EditMode == null || !ViewBag.EditMode)
+                                {
                                     <input type="file" name="file" />
-                                    }
+                                }
 
 
+
+
+
+                                <div class="mdl-card__actions mdl-card--border" style="margin-top:20px">
                                     @if (ViewBag.EditMode == true)
                                     {
-                                    <a href="@Url.Action("Delete", "Manage", new { carId = Model.Car.CarId })" style="display: block; margin-top: 15px; font-weight: bold;">
-                                        Usuń
-                                    </a>
+                                        <a href="@Url.Action("Delete", "Manage", new { carId = Model.Car.CarId })" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="color:red">
+                                            Usuń produkt
+                                        </a>
                                     }
-                                </div>
-                                <div class="mdl-card__actions mdl-card--border">
                                     <input type="submit" value="Zapisz zmiany" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" />
                                 </div>
+
                             }
                         </div>
 
