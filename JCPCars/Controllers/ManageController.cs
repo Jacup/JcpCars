@@ -443,5 +443,26 @@ namespace JCPCars.Controllers
             db.SaveChanges();
             return RedirectToAction("CarsList");
         }
+
+        public ActionResult HighlightCar(int carId)
+        {
+            var car = db.Cars.Find(carId);
+            car.IsHighlited = true;
+            db.SaveChanges();
+
+            return RedirectToAction("AddProduct", new { confirmSuccess = true });
+        }
+
+        public ActionResult UnHighlightCar(int carId)
+        {
+            var car = db.Cars.Find(carId);
+            car.IsHighlited = false;
+            db.SaveChanges();
+
+            return RedirectToAction("AddProduct", new { confirmSuccess = true });
+        }
+
+
+
     }
 }

@@ -27,11 +27,16 @@
 
                         <div class="mb-3">
                             <a href="">
-                                <span class="badge blue mr-1">@Model.Serie.Name</span>
+                                <span class="badge blue mr-1">@Model.Serie.Name</span>x`
                             </a>
-                            <a href="">
-                                <span class="badge red mr-1">IF PROMOTED TODO</span>
-                            </a>
+
+                            @if (Model.IsHighlited)
+                            {
+                                <a href="">
+                                    <span class="badge red mr-1">OGŁOSZENIE PROMOWANE</span>
+                                </a>
+                            }
+
                         </div>
 
                         <p class="lead">

@@ -10,5 +10,7 @@ namespace JCPCars.ViewModels
     {
         public IEnumerable<Car> NewArrivals { get; set; }
         public IEnumerable<Serie> Series { get; set; }
+
+        public IEnumerable<Car> Highliteds { get; set; }
     }
 }

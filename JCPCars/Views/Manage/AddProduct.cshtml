@@ -55,7 +55,7 @@
                             @if (Model.ConfirmSuccess.HasValue && Model.ConfirmSuccess.Value)
                             {
                                 <div style="text-align: center; margin: 50px;">
-                                    Samochód dodany pomyślnie!
+                                    Zmiany zostały zapisane!
                                 </div>
                             }
 
@@ -108,6 +108,11 @@
                                         @Html.TextBoxFor(o => o.Car.Power, new { @class = "mdl-textfield__input" })
                                         <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.Car.Power, "Moc (KM):")</label>
                                     </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        @Html.TextBoxFor(o => o.Car.Location, new { @class = "mdl-textfield__input" })
+                                        <label class="mdl-textfield__label" for="sample3">@Html.LabelFor(o => o.Car.Location, "Lokalizacja")</label>
+                                    </div>
+
                                 </div>
                                 <div class="mdl-card__supporting-text " style="text-align:center">
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -149,12 +154,30 @@
 
 
                                 <div class="mdl-card__actions mdl-card--border" style="margin-top:20px">
+
+                                    @if (@User.IsInRole("Admin"))
+                                    {
+                                        if (Model.Car.IsHighlited)
+                                        {
+                                            <a href="@Url.Action("UnHighlightCar", "Manage", new { carId = Model.Car.CarId })" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                                Usuń promowanie
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("HighlightCar", "Manage", new { carId = Model.Car.CarId })" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                                Promuj ogłoszenie
+                                            </a>
+                                        }
+                                    }
+
                                     @if (ViewBag.EditMode == true)
                                     {
                                         <a href="@Url.Action("Delete", "Manage", new { carId = Model.Car.CarId })" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="color:red">
                                             Usuń produkt
                                         </a>
                                     }
+
                                     <input type="submit" value="Zapisz zmiany" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" />
                                 </div>
 
