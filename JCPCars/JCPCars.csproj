@@ -282,7 +282,6 @@
     <Content Include="Content\Cars\4.png" />
     <Content Include="Content\Cars\5.png" />
     <Content Include="Content\Cars\6.png" />
-    <Content Include="Content\checkout-page.html" />
     <Content Include="Content\css\addons\datatables-select.css" />
     <Content Include="Content\css\addons\datatables-select.min.css" />
     <Content Include="Content\css\addons\datatables.css" />
@@ -305,7 +304,6 @@
     <Content Include="Content\css\modules\animations-extended.min.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\style.min.css" />
-    <Content Include="Content\home-page.html" />
     <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\ajax-loader.png" />
     <Content Include="Content\Images\auto-on.jpg" />
@@ -331,8 +329,6 @@
     <Content Include="Content\Images\sedan-car-model.png" />
     <Content Include="Content\Images\twitter.png" />
     <Content Include="Content\Images\upload.png" />
-    <Content Include="Content\index.html" />
-    <Content Include="Content\indexlogin.html" />
     <Content Include="Content\jquery.mobile-1.1.0.css" />
     <Content Include="Content\jquery.mobile-1.1.0.min.css" />
     <Content Include="Content\jquery.mobile.structure-1.1.0.css" />
@@ -375,9 +371,6 @@
       <DependentUpon>material.css</DependentUpon>
     </Content>
     <Content Include="Content\material.min.js" />
-    <Content Include="Content\product-page.html" />
-    <Content Include="Content\Site - Copy.css" />
-    <Content Include="Content\Site-prototype.css" />
     <Content Include="Content\Site.Mobile.css" />
     <Content Include="Content\styles.css" />
     <Content Include="Content\themes\base\accordion.css" />
